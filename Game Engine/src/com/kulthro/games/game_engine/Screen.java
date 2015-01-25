@@ -29,18 +29,9 @@ public class Screen {
 	
 	private Game game;
 	
-	public Screen(Game game) {
-		this.game = game;
-	}
-
-	/*Closes display window and cleans up*/
-	public void close(){
-		Display.destroy();
-		System.exit(0);
-	}
-	
 	/*Initialized the display*/
-	public static void initDisplay(){
+	public static void initDisplay(Game game) {
+		game = game;
 		try {
 			Display.setDisplayMode(new DisplayMode(Game.WIDTH,Game.HEIGHT));
 			Display.setTitle(Game.TITLE);
@@ -56,6 +47,7 @@ public class Screen {
 	
 	public static void closeDisplay() {
 		Display.destroy();
+		System.exit(0);
 	}
 	
 	public static boolean initGL(){

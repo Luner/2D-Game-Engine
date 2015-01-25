@@ -36,10 +36,8 @@ public class Game {
 	
 	public static void main(String[] args) {
 		Game game = new Game();
-		Screen screen = new Screen(game);
 		
-		
-		Screen.initDisplay();
+		Screen.initDisplay(game);
 		Screen.initGL();
 		game.run();
 		Screen.closeDisplay();
