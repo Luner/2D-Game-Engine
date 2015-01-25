@@ -2,7 +2,10 @@ package com.kulthro.games.game_engine;
 
 import java.util.ArrayList;
 
-import com.kulthro.games.game_engine.entities.Entity;
+import com.kulthro.games.game_engine.*;
+import com.kulthro.games.game_engine.camera.*;
+import com.kulthro.games.game_engine.entities.*;
+import com.kulthro.games.game_engine.menu.*;
 
 public class Game {
 	
@@ -12,13 +15,20 @@ public class Game {
 	public final static String TITLE = "Kulthro";
 
 	private ArrayList<Entity> entities;
+
+	public Game() {
+		entities = new ArrayList<Entity>();
+		entities.add(new Player(100,400));
+
+		Screen.initDisplay(this);
+		Screen.initGL();
+		this.run();
+		Screen.closeDisplay();
+		
+	}
 	
 	public static void main(String[] args) {
 		Game game = new Game();
-		Screen.initDisplay(game);
-		Screen.initGL();
-		game.run();
-		Screen.closeDisplay();
 	}
 	
 	//-------------------------------------------------- 
@@ -29,6 +39,7 @@ public class Game {
 		while(Screen.screenIsOpen()) {
 			tick();
 			Screen.draw();
+			Screen.updateScreen();
 		}
 	}
 	
