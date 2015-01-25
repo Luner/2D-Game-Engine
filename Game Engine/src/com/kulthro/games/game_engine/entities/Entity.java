@@ -11,13 +11,20 @@ public abstract class Entity {
 		this(0,0,0,0);
 	}
 	
-	public Entity(float x, float y) {
-		this(x, y, 0, 0);
+	public Entity(float positionX, float positionY) {
+		this(positionX, positionY, 0, 0);
 	}
 	
-	public Entity(float x, float y, float xx, float yy) {
-		position = new Vector2f(x,y);
-		direction = new Vector2f(xx,yy);
+	public Entity(float positionX, float positionY, float directionX, float directionY) {
+		position = new Vector2f(positionX,positionY);
+		direction = new Vector2f(directionX,directionY);
 	}
 	
+	private void move(){
+		this.position = this.position.add(direction);
+	}
+	
+	public void update(){
+		move();
+	}
 }
