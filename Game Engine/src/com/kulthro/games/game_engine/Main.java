@@ -1,44 +1,73 @@
 package com.kulthro.games.game_engine;
 import org.lwjgl.LWJGLException;
+import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
-import org.lwjgl.opengl.GL11;
+
 import static org.lwjgl.opengl.GL11.*;
 
 public class Main {
 	
 	private final static int WIDTH = 800;
 	private final static int HEIGHT = 600;
+	private final static int FRAME_RATE = 60;
+	private final static String TITLE = "Kulthro";
 	
-	public static void main(String[] args) {
-		
-		//Creates Display of WIDTH x HEIGHT
-		try {
-			Display.setDisplayMode(new DisplayMode(WIDTH,HEIGHT));
-			Display.create();
-		} catch (LWJGLException e) {
-			e.printStackTrace();
-		}
-		
-		// Sets up LWJGL with OpenGL.
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		glOrtho(0, WIDTH, 0, HEIGHT, 1, -1);
-		glMatrixMode(GL_MODELVIEW);
-		
+	private void run(){
 		while(!Display.isCloseRequested()) {
-			
+	
 			tick();
 			draw();
 			
-			// Update the screen
+			//Update the screen
 			Display.update();
-			Display.sync(60);
+			//Keeps a constant frame rate
+			Display.sync(FRAME_RATE);
 		}
+		close();
+	}
+
+	/*Initialized the display*/
+	private static void initDisplay(){
+		try {
+			Display.setDisplayMode(new DisplayMode(WIDTH,HEIGHT));
+			Display.setTitle(TITLE);
+			Display.create();
+		}
+
+		catch (LWJGLException e) {
+			Sys.alert("Error","Unable to create display.");
+			System.exit(0);
+		}
+	}
+	
+	private static boolean initGL(){
+		//Sets up LWJGL with OpenGL.
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		//(0,0) at bottom left & (WIDTH,HEIGHT) at top right
+		glOrtho(0,WIDTH,0,HEIGHT,1,-1);
+		glMatrixMode(GL_MODELVIEW);
 		
-		//Closes Display Window
+		//This enables the use of textures
+		glEnable(GL_TEXTURE_2D);
+		glEnable(GL_BLEND); 
+		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+		return true;
+	}
+		
+	
+	public static void main(String[] args) {
+		Main screen = new Main();
+		initDisplay();
+		initGL();
+		screen.run();
+	}
+
+	/*Closes display window and cleans up*/
+	private void close(){
 		Display.destroy();
-		
+		System.exit(0);
 	}
 	
 	/* Rendering functions*/
@@ -58,14 +87,12 @@ public class Main {
 		glBegin(GL_QUADS);
 		
 		glColor3f(0.1f,0.4f,0.8f);
-		
-		glVertex2f(0,HEIGHT);
-		glVertex2f(WIDTH,HEIGHT);
+		glVertex2f(0,HEIGHT);		//TOP RIGHT
+		glVertex2f(WIDTH,HEIGHT);	//TOP LEFT
 		
 		glColor3f(0.3f,0.8f,1f);
-		
-		glVertex2f(WIDTH,0);
-		glVertex2f(0,0);
+		glVertex2f(WIDTH,0);		//BOTTOM RIGHT
+		glVertex2f(0,0);			//BOTTOM LEFT
 		glEnd();
 	}
 	
@@ -80,6 +107,5 @@ public class Main {
 	/*Game Logic Functions*/
 	public static void tick() {
 		
-	}
-	
+	}	
 }
