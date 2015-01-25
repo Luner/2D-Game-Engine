@@ -27,13 +27,4 @@ public abstract class Entity {
 	public void update(){
 		move();
 	}
-
-	public float getX() {
-		return position.getX();
-	}
-	
-	public float getY() {
-		return position.getY();
-	}	
-
 }
