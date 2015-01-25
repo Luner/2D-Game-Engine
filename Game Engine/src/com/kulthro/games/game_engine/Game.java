@@ -36,7 +36,6 @@ public class Game {
 	
 	public static void main(String[] args) {
 		Game game = new Game();
-		
 		Screen.initDisplay(game);
 		Screen.initGL();
 		game.run();
