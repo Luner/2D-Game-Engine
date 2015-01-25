@@ -4,14 +4,20 @@ import com.kulthro.games.game_engine.*;
 
 public abstract class Entity {
 
-	private Vector2f vector;
+	private Vector2f position;
+	private Vector2f direction;
 	
 	public Entity() {
-		vector = new Vector2f(0,0); 
+		this(0,0,0,0);
 	}
 	
 	public Entity(float x, float y) {
-		vector = new Vector2f(x,y);
+		this(x, y, 0, 0);
+	}
+	
+	public Entity(float x, float y, float xx, float yy) {
+		position = new Vector2f(x,y);
+		direction = new Vector2f(xx,yy);
 	}
 	
 }
