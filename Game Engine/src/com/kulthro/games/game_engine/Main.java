@@ -87,8 +87,8 @@ public class Main {
 		glBegin(GL_QUADS);
 		
 		glColor3f(0.1f,0.4f,0.8f);
-		glVertex2f(0,HEIGHT);		//TOP RIGHT
-		glVertex2f(WIDTH,HEIGHT);	//TOP LEFT
+		glVertex2f(0,HEIGHT);		//TOP LEFT
+		glVertex2f(WIDTH,HEIGHT);	//TOP RIGHT
 		
 		glColor3f(0.3f,0.8f,1f);
 		glVertex2f(WIDTH,0);		//BOTTOM RIGHT
