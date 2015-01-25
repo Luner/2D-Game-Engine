@@ -65,6 +65,17 @@ public class Screen {
 		return true;
 	}
 	
+	public static boolean screenIsOpen() {
+		return !Display.isCloseRequested();
+	}
+	
+	public static void updateScreen() {
+		//Update the screen
+		Display.update();
+		//Keeps a constant frame rate
+		Display.sync(Game.FRAME_RATE);
+	}
+	
 	/* Rendering functions*/
 	public static void draw() {
 		clearScreen();
