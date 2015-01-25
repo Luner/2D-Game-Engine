@@ -25,13 +25,15 @@ import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
+import com.kulthro.games.game_engine.entities.Entity;
+
 public class Screen {
 	
-	private Game game;
+	private static Game game;
 	
 	/*Initialized the display*/
 	public static void initDisplay(Game game) {
-		game = game;
+		Screen.game = game;
 		try {
 			Display.setDisplayMode(new DisplayMode(Game.WIDTH,Game.HEIGHT));
 			Display.setTitle(Game.TITLE);
@@ -105,6 +107,18 @@ public class Screen {
 	}
 	
 	public static void drawEntities() {
+		
+		for(Entity e : game.getEntities()) {
+			glBegin(GL_QUADS);
+			glColor3f(1,0,0);
+			
+			glVertex2f(e.getX()-5,e.getY()-5);
+			glVertex2f(e.getX()+5,e.getY()-5);
+			glVertex2f(e.getX()+5,e.getY()+5);
+			glVertex2f(e.getX()-5,e.getY()+5);
+			
+			glEnd();
+		}
 		
 	}
 	

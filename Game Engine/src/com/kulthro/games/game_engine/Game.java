@@ -18,7 +18,11 @@ public class Game {
 
 	public Game() {
 		entities = new ArrayList<Entity>();
+		
+		//Test Adding players
 		entities.add(new Player(100,400));
+		entities.add(new Player(310,200));
+		entities.add(new Player(700,40));
 
 		Screen.initDisplay(this);
 		Screen.initGL();
@@ -35,7 +39,7 @@ public class Game {
 	//  Game Logic functions
 	//-------------------------------------------------- 
 	
-	private void run(){
+	private void run() {
 		while(Screen.screenIsOpen()) {
 			tick();
 			Screen.draw();
@@ -45,5 +49,14 @@ public class Game {
 	
 	public static void tick() {
 		
-	}	
+	}
+	
+	//-------------------------------------------------- 
+	//  Getters and Setters
+	//-------------------------------------------------- 
+	
+	public ArrayList<Entity> getEntities() {
+		return entities;
+	}
+	
 }
