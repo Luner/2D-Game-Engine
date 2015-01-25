@@ -8,4 +8,8 @@ public abstract class Mob extends Entity {
 		health = 100;
 	}
 	
+	public Mob(float x, float y) {
+		super(x, y);
+	}
+	
 }
