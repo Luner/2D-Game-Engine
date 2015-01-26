@@ -27,11 +27,9 @@ import org.lwjgl.opengl.DisplayMode;
 
 public class Screen {
 	
-	private Game game;
 	
 	/*Initialized the display*/
-	public static void initDisplay(Game game) {
-		game = game;
+	public static void initDisplay() {
 		try {
 			Display.setDisplayMode(new DisplayMode(Game.WIDTH,Game.HEIGHT));
 			Display.setTitle(Game.TITLE);
