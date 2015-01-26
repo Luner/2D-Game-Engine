@@ -4,16 +4,15 @@ import org.newdawn.slick.opengl.Texture;
 
 public abstract class Mob extends Entity {
 	
+	private int health = 100;
 	private Texture tex;
-
-	private int health;
-	
-	public Mob() {
-		health = 100;
-	}
 	
 	public Mob(float x, float y) {
 		super(x, y);
+	}
+	
+	public void damage (int damage){
+		this.health = this.health - damage;
 	}
 	
 	public Texture getTexture() {
@@ -23,5 +22,4 @@ public abstract class Mob extends Entity {
 	public void setTexture(Texture texture) {
 		this.tex = texture;
 	}
-	
 }
