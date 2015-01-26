@@ -14,14 +14,27 @@ public class Game {
 	public final static int HEIGHT = 600;
 	public final static int FRAME_RATE = 60;
 	public final static String TITLE = "Kulthro";
-
-	private State state = State.MainMenu;
+	private State state = State.Menu;
 	
 	private Menu mainMenu = new Menu(new SquareButton[] {
 			new SquareButton(200,400,600,500, "Start", "png"),
 			new SquareButton(200,250,600,350, "Options", "png"),
 			new SquareButton(200,100,600,200, "Exit", "png")
 	});
+	
+	private Menu options = new Menu(new SquareButton[] {
+			new SquareButton(200,400,600,500, "Options", "png"),
+			new SquareButton(200,250,600,350, "Options", "png"),
+			new SquareButton(200,100,600,200, "Exit", "png")
+	});
+	
+	private Menu credits = new Menu(new SquareButton[] {
+			new SquareButton(200,400,600,500, "Start", "png"),
+			new SquareButton(200,250,600,350, "Start", "png"),
+			new SquareButton(200,100,600,200, "Exit", "png")
+	});
+	
+	private Menu[] menuSystem = {mainMenu, options, credits};
 	
 	private ArrayList<Entity> entities;
 
@@ -56,26 +69,35 @@ public class Game {
 			Screen.clearScreen();
 			
 			switch(state) {
-			case MainMenu:
+			case Menu:
 
 				//initializes the menu
-				if(mainMenu.isInitialized() == false){
-					mainMenu.initMenu();
+				if(menuSystem[Menu.index].isInitialized() == false){
+					menuSystem[Menu.index].initMenu();
 				}
 				//Returns the name of the button if it is clicked
 				if(Mouse.isButtonDown(0)){
-					String key = mainMenu.click(Mouse.getX(), Mouse.getY());
+					String key = menuSystem[Menu.index].click(Mouse.getX(), Mouse.getY());
 					if(key != ""){
 						System.out.println(key);
 						if(key.equals("Exit")){
 							Screen.closeDisplay();
+						}
+						else if(key.equalsIgnoreCase("Options")){
+							Menu.index = 1;
+							break;
+						}
+						else if(key.equals("Credits")){
+							Menu.index = 2;
+						}
+						else if(key.equals("Back")){
 						}
 						else if(key.equals("Start")){
 							state = State.Game;
 						}
 					}
 				}
-				mainMenu.update();
+				menuSystem[Menu.index].update();
 				break;
 
 			case Game:

@@ -1,17 +1,21 @@
 package com.kulthro.games.game_engine.menu;
 
 import com.kulthro.games.game_engine.Render;
-import com.kulthro.games.game_engine.files.ImageReader;
 
 public class Menu { 
 
 	private boolean initialized = false;
 	private SquareButton buttons[];
-
+	public static int index = 0;
+	
 	public Menu(SquareButton[] buttons){
 		this.buttons = buttons;
 	}
 
+	public void unInitialize(){
+		this.initialized = false;
+	}
+	
 	public boolean isInitialized(){
 		return initialized;
 	}
