@@ -107,17 +107,8 @@ public class Screen {
 	}
 	
 	public static void drawEntities() {
-		
 		for(Entity e : game.getEntities()) {
-			glBegin(GL_QUADS);
-			glColor3f(1,0,0);
-			
-			glVertex2f(e.getX()-5,e.getY()-5);
-			glVertex2f(e.getX()+5,e.getY()-5);
-			glVertex2f(e.getX()+5,e.getY()+5);
-			glVertex2f(e.getX()-5,e.getY()+5);
-			
-			glEnd();
+			Render.renderQuad(e.getX()-5, e.getY()-5, e.getX()+5, e.getY()+5, 1, 0, 0);
 		}
 		
 	}

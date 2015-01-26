@@ -28,11 +28,10 @@ public class Render {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 	
-	public static void renderQuad(float leftX,float bottomY,float rightX, float topY, float r, float g, float b){
+	public static void renderQuad(float leftX,float bottomY,float rightX, float topY, float r, float g, float b) {
 		
 		glBegin(GL_QUADS);
 		glColor3f(r,g,b);
-		GL11.glColor3f(1.0f, 1.0f, 1.0f);
 		GL11.glTexCoord2f(0.0f,1.0f);
 		GL11.glVertex2f(leftX, bottomY);    // Bottom Left Of The Quad
 		GL11.glTexCoord2f(1.0f,1.0f);
