@@ -27,9 +27,13 @@ import org.lwjgl.opengl.DisplayMode;
 
 import com.kulthro.games.game_engine.entities.Entity;
 
+public class Screen {
+
+	private static Game game;
 	
 	/*Initialized the display*/
-	public static void initDisplay() {
+	public static void initDisplay(Game game) {
+		Screen.game = game;
 		try {
 			Display.setDisplayMode(new DisplayMode(Game.WIDTH,Game.HEIGHT));
 			Display.setTitle(Game.TITLE);
@@ -115,6 +119,10 @@ import com.kulthro.games.game_engine.entities.Entity;
 			
 			glEnd();
 		}
+		
+	}
+	
+	public static void drawMenu() {
 		
 	}
 	
