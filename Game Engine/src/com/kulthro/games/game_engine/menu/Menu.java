@@ -2,6 +2,7 @@ package com.kulthro.games.game_engine.menu;
 
 import com.kulthro.games.game_engine.Render;
 import com.kulthro.games.game_engine.files.ImageReader;
+
 public class Menu { 
 
 	private boolean initialized = false;
@@ -48,6 +49,5 @@ public class Menu {
 
 	private void renderButton(SquareButton button){
 		Render.renderQuad(button.leftX, button.bottomY, button.rightX, button.topY, button.getTexture());
-		button.getTexture().bind();
 	}
 }
