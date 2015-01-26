@@ -35,9 +35,12 @@ public class Game {
 		Game game = new Game();
 	}
 	
-	//-------------------------------------------------- 
-	//  Game Logic functions
-	//-------------------------------------------------- 
+	/*------------------------------------------------- 
+	/  Game Logic functions
+	/-------------------------------------------------- 
+	/
+	/ One tick is equal to one frame. Rather than edit the while loop in run(), please add all tick methods within tick();
+	*/
 	
 	private void run() {
 		while(Screen.screenIsOpen()) {
@@ -47,8 +50,11 @@ public class Game {
 		}
 	}
 	
-	public static void tick() {
-		
+	public void tick() {
+		//Update all Entities
+		for(Entity e : entities) {
+			e.update();
+		}
 	}
 	
 	//-------------------------------------------------- 
@@ -57,6 +63,10 @@ public class Game {
 	
 	public ArrayList<Entity> getEntities() {
 		return entities;
+	}
+	
+	public int getEntityCount() {
+		return entities.size();
 	}
 	
 }
