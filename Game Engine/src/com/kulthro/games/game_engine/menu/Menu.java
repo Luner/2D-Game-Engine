@@ -7,7 +7,6 @@ public class Menu {
 
 	private boolean initialized = false;
 	private SquareButton buttons[];
-	ImageReader load = new ImageReader();
 
 	public Menu(SquareButton[] buttons){
 		this.buttons = buttons;
@@ -28,7 +27,7 @@ public class Menu {
 
 	public void loadButtonTextures(){
 		for(int i = 0; i < buttons.length; i++){
-			buttons[i].setTexture(load.loadTexture(buttons[i].getKey(), buttons[i].getType()));
+			buttons[i].setTexture(Render.getTexture(buttons[i].getKey(), buttons[i].getType()));
 		}
 	}
 

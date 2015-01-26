@@ -6,11 +6,16 @@ import static org.lwjgl.opengl.GL11.glBegin;
 import static org.lwjgl.opengl.GL11.glBindTexture;
 import static org.lwjgl.opengl.GL11.glColor3f;
 import static org.lwjgl.opengl.GL11.glEnd;
-
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
+import com.kulthro.games.game_engine.files.ImageReader;
 
 public class Render {
+	
+	public static Texture getTexture(String key, String type){
+		ImageReader load = new ImageReader();
+		return load.loadTexture(key, type);
+	}
 	
 	public static void renderQuad(float leftX,float bottomY,float rightX,float topY, Texture tex){
 		tex.bind();
