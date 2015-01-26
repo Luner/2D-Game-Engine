@@ -52,10 +52,10 @@ public class Game {
 	private void run() {
 
 		while(Screen.screenIsOpen()) {
-			tick();
-			Screen.draw();
 			
-			switch(state){
+			Screen.clearScreen();
+			
+			switch(state) {
 			case MainMenu:
 
 				//initializes the menu
@@ -80,10 +80,12 @@ public class Game {
 
 			case Game:
 				/*Game Stuff Here*/
+				tick();
+				Screen.drawGame();
 				break;
 			}
-
 			Screen.updateScreen();
+
 		}
 	}
 	
@@ -104,6 +106,14 @@ public class Game {
 	
 	public int getEntityCount() {
 		return entities.size();
+	}
+	
+	public State getState() {
+		return state;
+	}
+	
+	public Menu getMainMenu() {
+		return mainMenu;
 	}
 	
 
