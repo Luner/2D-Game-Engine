@@ -9,12 +9,12 @@ In order to work on this project you will need a few things.
 
 GIT
 ---
-##INSTALL GIT
+####INSTALL GIT
 - install git which can be done here: http://git-scm.com/book/en/v2/Getting-Started-Installing-Git#Installing-on-Mac
 - Make sure it is working by opening terminal and typing git
 - git allows you to pull repositories from places like git hub, creating a local repository, and push that local one back to the remote one
 
-##IMPORTANT COMMANDS - these commands are used in terminal
+####IMPORTANT COMMANDS - these commands are used in terminal
 - git clone <uri> : this clones the repository from the uri locally so you can modify it and later push it back up
 - git add <FilePath> : this adds the file that specified so its included when commited
 - git commit : this will open a vim window (see VIM) that you can write the message of the commit and when completed the changed files that were added in "git add" will be commited
@@ -26,7 +26,7 @@ GIT
 - git log : displays a log of all of the past commits with the commit id, the writer, the date, and the commit message.  This is useful when needed to revert to a previous commit
 - git status : lists all of the files that were modified or added so you can keep track of what is going to be commited
 
-##SETUP REPOSITORY
+####SETUP REPOSITORY
 - After installing git, use terminal to navigate to a directory that you wish to contain your local repiratory
 - Type git clone and then the uri, which is currently "https://github.com/Luner/Game-Engine"
 - This will copy the things from online into that directory
