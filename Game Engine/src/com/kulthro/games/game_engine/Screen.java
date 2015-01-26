@@ -79,10 +79,11 @@ public class Screen {
 	}
 	
 	/* Rendering functions*/
-	public static void draw() {
+	public static void drawGame() {
 		clearScreen();
 		
 		drawBackground();
+		
 		drawBlocks();
 		drawEntities();
 	}
