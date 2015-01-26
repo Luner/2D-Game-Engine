@@ -30,7 +30,7 @@ import com.kulthro.games.game_engine.entities.Entity;
 public class Screen {
 
 	private static Game game;
-	
+
 	/*Initialized the display*/
 	public static void initDisplay(Game game) {
 		Screen.game = game;
@@ -46,12 +46,12 @@ public class Screen {
 			System.exit(0);
 		}
 	}
-	
+
 	public static void closeDisplay() {
 		Display.destroy();
 		System.exit(0);
 	}
-	
+
 	public static boolean initGL(){
 		//Sets up LWJGL with OpenGL.
 		glMatrixMode(GL_PROJECTION);
@@ -59,63 +59,56 @@ public class Screen {
 		//(0,0) at bottom left & (WIDTH,HEIGHT) at top right
 		glOrtho(0,Game.WIDTH,0,Game.HEIGHT,1,-1);
 		glMatrixMode(GL_MODELVIEW);
-		
+
 		//This enables the use of textures
 		glEnable(GL_TEXTURE_2D);
 		glEnable(GL_BLEND); 
 		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 		return true;
 	}
-	
+
 	public static boolean screenIsOpen() {
 		return !Display.isCloseRequested();
 	}
-	
+
 	public static void updateScreen() {
 		//Update the screen
 		Display.update();
 		//Keeps a constant frame rate
 		Display.sync(Game.FRAME_RATE);
 	}
-	
+
 	/* Rendering functions*/
 	public static void drawGame() {
 		clearScreen();
-		
+
 		drawBackground();
-		
+
 		drawBlocks();
 		drawEntities();
 	}
-	
+
 	public static void clearScreen() {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
 	}
-	
+
 	public static void drawBackground() {
-		glBegin(GL_QUADS);
-		glColor3f(0.1f,0.4f,0.8f);
-		glVertex2f(0,Game.HEIGHT);			//Left, Top
-		glVertex2f(Game.WIDTH,Game.HEIGHT);	//Right, Top
-		glColor3f(0.3f,0.8f,1f);
-		glVertex2f(Game.WIDTH,0);			//Right, Bottom
-		glVertex2f(0,0);					//Bottom, Left
-		glEnd();
+		Render.renderQuadVerticleGradient(0, 0, Game.WIDTH, Game.HEIGHT, 0.1f, 0.4f, 0.8f, 0.3f, 0.8f, 1f);
 	}
-	
+
 	public static void drawBlocks() {
-		
+
 	}
-	
+
 	public static void drawEntities() {
 		for(Entity e : game.getEntities()) {
 			Render.renderQuad(e.getPosition().getX()-5, e.getPosition().getY()-5, e.getPosition().getX()+5, e.getPosition().getY()+5, Render.getTexture("Slime","png"));
 		}
-		
+
 	}
-	
+
 	public static void drawMenu() {
-		
+
 	}
-	
+
 }
