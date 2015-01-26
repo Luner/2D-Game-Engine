@@ -27,13 +27,12 @@ public class Game {
 
 	public Game() {
 		entities = new ArrayList<Entity>();
-		
 		//Test Adding players
 		entities.add(new Player(100,400));
 		entities.add(new Player(310,200));
 		entities.add(new Player(700,40));
 
-		Screen.initDisplay();
+		Screen.initDisplay(this);
 		Screen.initGL();
 		this.run();
 		Screen.closeDisplay();
