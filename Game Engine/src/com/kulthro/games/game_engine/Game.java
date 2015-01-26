@@ -2,9 +2,6 @@ package com.kulthro.games.game_engine;
 
 import java.util.ArrayList;
 import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.Display;
-import com.kulthro.games.game_engine.*;
-import com.kulthro.games.game_engine.camera.*;
 import com.kulthro.games.game_engine.entities.*;
 import com.kulthro.games.game_engine.menu.*;
 
@@ -17,15 +14,15 @@ public class Game {
 	private State state = State.Menu;
 	
 	private Menu mainMenu = new Menu(new SquareButton[] {
-			new SquareButton(200,400,600,500, "Start", "png"),
-			new SquareButton(200,250,600,350, "Options", "png"),
-			new SquareButton(200,100,600,200, "Exit", "png")
+			new SquareButton(200,400,600,500, "Start", "png", "Start"),
+			new SquareButton(200,250,600,350, "Options", "png", "toOptions"),
+			new SquareButton(200,100,600,200, "Exit", "png", "Exit")
 	});
 	
 	private Menu options = new Menu(new SquareButton[] {
 			new SquareButton(200,400,600,500, "Options", "png"),
 			new SquareButton(200,250,600,350, "Options", "png"),
-			new SquareButton(200,100,600,200, "Exit", "png")
+			new SquareButton(200,100,600,200, "Exit", "png", "toMain")
 	});
 	
 	private Menu credits = new Menu(new SquareButton[] {
@@ -77,23 +74,27 @@ public class Game {
 				}
 				//Returns the name of the button if it is clicked
 				if(Mouse.isButtonDown(0)){
-					String key = menuSystem[Menu.index].click(Mouse.getX(), Mouse.getY());
-					if(key != ""){
-						System.out.println(key);
-						if(key.equals("Exit")){
+					String action = menuSystem[Menu.index].click(Mouse.getX(), Mouse.getY());
+					if(!action.equals("none") && !action.equals("")){
+						System.out.println(action);
+						if(action.equals("Exit")){
 							Screen.closeDisplay();
 						}
-						else if(key.equalsIgnoreCase("Options")){
+						else if(action.equalsIgnoreCase("toMain")){
+							Menu.index = 0;
+							break;
+						}
+						else if(action.equalsIgnoreCase("toOptions")){
 							Menu.index = 1;
 							break;
 						}
-						else if(key.equals("Credits")){
+						else if(action.equals("toCredits")){
 							Menu.index = 2;
+							break;
 						}
-						else if(key.equals("Back")){
-						}
-						else if(key.equals("Start")){
+						else if(action.equals("Start")){
 							state = State.Game;
+							break;
 						}
 					}
 				}

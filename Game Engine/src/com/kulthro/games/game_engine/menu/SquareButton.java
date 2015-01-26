@@ -9,6 +9,7 @@ public class SquareButton {
 	public float topY;
 	private String key;
 	private String type;
+	private String action;
 	private Texture tex;
 	
 	public SquareButton(float leftX, float bottomY, float rightX, float topY){
@@ -18,6 +19,7 @@ public class SquareButton {
 		this.topY = topY;
 		this.key = "default";
 		this.type = "png";
+		this.action = "none";
 	}
 	
 	public SquareButton(float leftX, float bottomY, float rightX, float topY, String key, String type){
@@ -27,6 +29,17 @@ public class SquareButton {
 		this.topY = topY;
 		this.key = key;
 		this.type = type;
+		this.action = "none";
+	}
+	
+	public SquareButton(float leftX, float bottomY, float rightX, float topY, String key, String type, String action){
+		this.leftX = leftX;
+		this.bottomY = bottomY;
+		this.rightX = rightX;
+		this.topY = topY;
+		this.key = key;
+		this.type = type;
+		this.action = action;
 	}
 	
 	public void setTexture(Texture texture){
@@ -39,6 +52,10 @@ public class SquareButton {
 	
 	public String getKey(){
 		return key;
+	}
+	
+	public String getAction(){
+		return action;
 	}
 	
 	public Texture getTexture(){

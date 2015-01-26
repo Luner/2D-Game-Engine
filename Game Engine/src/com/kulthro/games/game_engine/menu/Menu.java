@@ -44,7 +44,7 @@ public class Menu {
 	public String click(int Mousex, int Mousey){
 		for (int i = 0; i < buttons.length; i++){
 			if (buttons[i].isClicked(Mousex, Mousey)){
-				return buttons[i].getKey();
+				return buttons[i].getAction();
 			}
 		}
 		return "";
