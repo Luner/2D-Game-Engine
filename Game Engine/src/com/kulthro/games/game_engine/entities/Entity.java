@@ -28,6 +28,26 @@ public abstract class Entity {
 		move();
 	}
 	
+	/*
+	 * Getters and setters
+	 */
+	
+	public Vector2f getPosition() {
+		return position;
+	}
+	
+	public Vector2f getDirection() {
+		return direction;
+	}
+	
+	public void setPosition(Vector2f position) {
+		this.position = position;
+	}
+	
+	public void setDirection(Vector2f direction) {
+		this.direction = direction;
+	}
+	
 	public float getX() {
 		return position.getX();
 	}
