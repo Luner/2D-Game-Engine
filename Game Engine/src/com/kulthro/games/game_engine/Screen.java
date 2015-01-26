@@ -109,7 +109,7 @@ public class Screen {
 	
 	public static void drawEntities() {
 		for(Entity e : game.getEntities()) {
-			Render.renderQuad(e.getX()-5, e.getY()-5, e.getX()+5, e.getY()+5, Render.getTexture("Slime","png"));
+			Render.renderQuad(e.getPosition().getX()-5, e.getPosition().getY()-5, e.getPosition().getX()+5, e.getPosition().getY()+5, Render.getTexture("Slime","png"));
 		}
 		
 	}
