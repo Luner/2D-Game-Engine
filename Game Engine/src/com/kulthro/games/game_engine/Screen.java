@@ -25,8 +25,8 @@ import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
-public class Screen {
-	
+import com.kulthro.games.game_engine.entities.Entity;
+
 	
 	/*Initialized the display*/
 	public static void initDisplay() {
@@ -103,6 +103,18 @@ public class Screen {
 	}
 	
 	public static void drawEntities() {
+		
+		for(Entity e : game.getEntities()) {
+			glBegin(GL_QUADS);
+			glColor3f(1,0,0);
+			
+			glVertex2f(e.getX()-5,e.getY()-5);
+			glVertex2f(e.getX()+5,e.getY()-5);
+			glVertex2f(e.getX()+5,e.getY()+5);
+			glVertex2f(e.getX()-5,e.getY()+5);
+			
+			glEnd();
+		}
 		
 	}
 	

@@ -20,11 +20,20 @@ public abstract class Entity {
 		direction = new Vector2f(directionX,directionY);
 	}
 	
-	private void move(){
+	private void move() {
 		this.position = this.position.add(direction);
 	}
 	
-	public void update(){
+	public void update() {
 		move();
 	}
+	
+	public float getX() {
+		return position.getX();
+	}
+	
+	public float getY() {
+		return position.getY();
+	}
+	
 }
