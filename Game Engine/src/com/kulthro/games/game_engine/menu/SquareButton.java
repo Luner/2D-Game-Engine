@@ -13,23 +13,11 @@ public class SquareButton {
 	private Texture tex;
 	
 	public SquareButton(float leftX, float bottomY, float rightX, float topY){
-		this.leftX = leftX;
-		this.bottomY = bottomY;
-		this.rightX = rightX;
-		this.topY = topY;
-		this.key = "default";
-		this.type = "png";
-		this.action = "none";
+		this(leftX, bottomY, rightX, topY, "default", "png", "none");
 	}
 	
 	public SquareButton(float leftX, float bottomY, float rightX, float topY, String key, String type){
-		this.leftX = leftX;
-		this.bottomY = bottomY;
-		this.rightX = rightX;
-		this.topY = topY;
-		this.key = key;
-		this.type = type;
-		this.action = "none";
+		this(leftX, bottomY, rightX, topY, key, type, "none");
 	}
 	
 	public SquareButton(float leftX, float bottomY, float rightX, float topY, String key, String type, String action){
