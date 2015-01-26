@@ -2,11 +2,6 @@ package com.kulthro.games.game_engine.menu;
 
 import com.kulthro.games.game_engine.Render;
 import com.kulthro.games.game_engine.files.ImageReader;
-
-import static org.lwjgl.opengl.GL11.*;
-
-import org.lwjgl.opengl.GL11;
-
 public class Menu { 
 
 	private boolean initialized = false;
