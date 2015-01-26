@@ -17,7 +17,7 @@ public class Game {
 
 	private State state = State.MainMenu;
 	
-	private Menu main = new Menu(new SquareButton[] {
+	private Menu mainMenu = new Menu(new SquareButton[] {
 			new SquareButton(200,400,600,500, "Start", "png"),
 			new SquareButton(200,250,600,350, "Options", "png"),
 			new SquareButton(200,100,600,200, "Exit", "png")
@@ -59,12 +59,12 @@ public class Game {
 			case MainMenu:
 
 				//initializes the menu
-				if(main.isInitialized() == false){
-						main.initMenu();
+				if(mainMenu.isInitialized() == false){
+					mainMenu.initMenu();
 				}
 				//Returns the name of the button if it is clicked
 				if(Mouse.isButtonDown(0)){
-					String key = main.click(Mouse.getX(), Mouse.getY());
+					String key = mainMenu.click(Mouse.getX(), Mouse.getY());
 					if(key != ""){
 						System.out.println(key);
 						if(key.equals("Exit")){
@@ -75,7 +75,7 @@ public class Game {
 						}
 					}
 				}
-				main.update();
+				mainMenu.update();
 				break;
 
 			case Game:
