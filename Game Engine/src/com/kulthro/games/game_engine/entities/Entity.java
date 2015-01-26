@@ -27,11 +27,7 @@ public abstract class Entity {
 	public void update() {
 		move();
 	}
-	
-	/*
-	 * Getters and setters
-	 */
-	
+
 	public Vector2f getPosition() {
 		return position;
 	}
@@ -47,13 +43,4 @@ public abstract class Entity {
 	public void setDirection(Vector2f direction) {
 		this.direction = direction;
 	}
-	
-	public float getX() {
-		return position.getX();
-	}
-	
-	public float getY() {
-		return position.getY();
-	}
-	
 }
