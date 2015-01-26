@@ -1,15 +1,15 @@
 1. Player Entity
-   a. Controllable
-   b. Health & stats
-   c. Collision (hit-boxes based on circles and rectangles), physics, interaction with environment
-   d. HUD & inventory
-   e. Each have individual names?
+   - Controllable
+   - Health & stats
+   - Collision (hit-boxes based on circles and rectangles), physics, interaction with environment
+   - HUD & inventory
+   - Each have individual names?
 2. Block system
 3. Level system
-   a. Based on .txt files (Saving, Loading, etc.)
+   - Based on .txt files (Saving, Loading, etc.)
 4. Menu system
-   a. Interaction with other game states, capable of loading game and assets
-   b. Options
+   - Interaction with other game states, capable of loading game and assets
+   - Options
       - Fullscreen, Resolution
       - Sliders
       - Checkboxes
