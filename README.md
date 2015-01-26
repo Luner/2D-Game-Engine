@@ -1,11 +1,14 @@
+Kulthro Game Engine
+===================
 This file should at least attempt to explain the plan and how to set things up!!!
 
-////Getting Started////
+Getting Started
+---------------
 In order to work on this project you will need a few things.
 
 
-///GIT///
-
+GIT
+---
 INSTALL GIT
 - install git which can be done here: http://git-scm.com/book/en/v2/Getting-Started-Installing-Git#Installing-on-Mac
 - Make sure it is working by opening terminal and typing git
@@ -29,8 +32,8 @@ SETUP REPOSITORY
 - This will copy the things from online into that directory
 
 
-///ECLIPSE///
-
+ECLIPSE
+-------
 INSTALL ECLIPSE
 - download eclipse from https://eclipse.org/downloads/
 
@@ -45,8 +48,8 @@ CONNECT TO REPOSITORY
 - This should do it
 
 
-///ARCANIST///
-
+ARCANIST
+--------
 INSTALL ARCANIST
 - Follow the instructions on : https://secure.phabricator.com/book/phabricator/article/arcanist/
 - Test to make sure that arcanist was installed correctly by typing "arc help" into the terminal command line
@@ -57,14 +60,15 @@ IMPORTANT COMMANDS
 - arc land : this is what can be used instead to replace git push. The difference is that it will only let you push if you were approved by a revisor.  *I havent gotten this working yet and will be worked on
 
 
-///PHABRICATOR///
-
+PHABRICATOR
+-----------
 USING PHABRICATOR
 - Phabricator is used to manage projects, allowing code that is uploaded using arc diff to be reviewed by different people. This is done so that people who are working on the project can give their feedback and understand what is being added
 - You can also create tasks and manage their importance which is a good was of managing and keeping track of bugs and getting things done
 
 
-///VIM///
+VIM
+---
 - VIM is an editor that is often used inside of terminal
 
 USING VIM
@@ -73,7 +77,8 @@ USING VIM
   - When you are done, press escape to exit the insert mode and then type ":wq" which will write and quit
 
 
-///COMMITING AND PUSHING TO REMOTE REPOSITORY///
+COMMITING AND PUSHING TO REMOTE REPOSITORY
+------------------------------------------
 - First you want to make sure that you are on a different branch than master
   - to do this type "git branch". The branch that appears green indicates that you are on that branch
   - if you are on the master branch, either switch to a feature branch or create a new feature branch.  This is done by using either "git checkout <BranchName>" to switch to an existing branch and "git checkout -b <BranchName>" to create a new branch and switch to it"
