@@ -21,4 +21,4 @@
    - Scales based on camera’s x and y changes
 
 ~~~~~~~~
-Reach Goal is to have 80% of the above done by Sunday @ 9 PM
+Reach Goal is to have 80% of the above done by Sunday (2-1-2015) @ 9 PM
