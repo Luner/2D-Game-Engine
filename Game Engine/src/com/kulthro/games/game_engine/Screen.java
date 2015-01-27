@@ -19,15 +19,13 @@ import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
-import org.newdawn.slick.Color;
 import org.newdawn.slick.TrueTypeFont;
 import com.kulthro.games.game_engine.entities.Player;
 
 public class Screen {
 
 	private static Game game;
-	static TrueTypeFont font;
-	static TrueTypeFont font2;
+	public static TrueTypeFont font;
 	
 	/*Initialized the display*/
 	public static void initDisplay(Game game) {
@@ -49,8 +47,8 @@ public class Screen {
 	 
 	public static void initFont() {
 		// load a default java font
-		Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
-		font = new TrueTypeFont(awtFont, false);
+		Font awtFont = new Font("Copperplate Gothic Bold", Font.BOLD, 56);
+		font = new TrueTypeFont(awtFont, true);
 	}
 
 	public static void closeDisplay() {
@@ -107,7 +105,6 @@ public class Screen {
 	}
 
 	public static void drawEntities() {
-		font.drawString(100, 50, "THE LIGHTWEIGHT JAVA GAMES LIBRARY", Color.darkGray);
 		for(Player e : game.getEntities()) {
 			Render.renderQuad(e.getPosition().getX()-5, e.getPosition().getY()-5, e.getPosition().getX()+5, e.getPosition().getY()+5, e.getTexture());
 		}

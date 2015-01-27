@@ -3,6 +3,7 @@ package com.kulthro.games.game_engine;
 import java.util.ArrayList;
 
 import org.lwjgl.input.Mouse;
+import org.newdawn.slick.Color;
 
 import com.kulthro.games.game_engine.entities.*;
 import com.kulthro.games.game_engine.menu.*;
@@ -14,27 +15,34 @@ public class Game {
 	public final static int FRAME_RATE = 60;
 	public final static String TITLE = "Kulthro";
 	private State state = State.Menu;
-	
-	private Menu mainMenu = new Menu(new SquareButton[] {
-			new SquareButton(200,400,600,500, "Exit", "png", "Exit"),
-			new SquareButton(200,250,600,350, "Options", "png", "toOptions"),
-			new SquareButton(200,100,600,200, "Start", "png", "Start")
-	});
-	
+
+	private Menu mainMenu = new Menu(
+			new SquareButton[] {
+					new SquareButton(200,400,600,500, "Exit", "png", "Exit"),
+					new SquareButton(200,250,600,350, "Options", "png", "toOptions"),
+					new SquareButton(200,100,600,200, "Start", "png", "Start")
+			},
+			new TextBox[] {
+					new TextBox(235, 10, "Main Menu", Color.white)
+			});
+
 	private Menu options = new Menu(new SquareButton[] {
 			new SquareButton(200,400,600,500, "Exit", "png", "toMain"),
 			new SquareButton(200,250,600,350, "Options", "png"),
 			new SquareButton(200,100,600,200, "Options", "png")
+	},
+	new TextBox[] {
+			new TextBox(270, 10, "Options", Color.white)
 	});
-	
+
 	private Menu credits = new Menu(new SquareButton[] {
 			new SquareButton(200,400,600,500, "Exit", "png"),
 			new SquareButton(200,250,600,350, "Start", "png"),
 			new SquareButton(200,100,600,200, "Start", "png")
 	});
-	
+
 	private Menu[] menuSystem = {mainMenu, options, credits};
-	
+
 	private ArrayList<Player> entities;
 
 	public Game() {
@@ -43,17 +51,17 @@ public class Game {
 		entities.add(new Player(100,400));
 		entities.add(new Player(310,200));
 		entities.add(new Player(700,40));
-		
-		
-		
+
+
+
 		Screen.initDisplay(this);
 		Screen.initGL();
-		
+
 		//temp addition to textures
 		for(Player e : getEntities()) {
 			e.setTexture(Render.getTexture("Slime", "png"));
 		}
-		
+
 		Screen.initFont();
 		this.run();
 		Screen.closeDisplay();
@@ -67,14 +75,14 @@ public class Game {
 	/  Game Logic functions
 	/-------------------------------------------------- 
 	/ One tick is equal to one frame. Rather than edit the while loop in run(), please add all tick methods within tick();
-	*/
-	
+	 */
+
 	private void run() {
 
 		while(Screen.screenIsOpen()) {
-			
+
 			Screen.clearScreen();
-			
+
 			switch(state) {
 			case Menu:
 
@@ -121,33 +129,33 @@ public class Game {
 
 		}
 	}
-	
+
 	public void tick() {
 		//Update all Entities
 		for(Entity e : entities) {
 			e.update();
 		}
 	}
-	
+
 	//-------------------------------------------------- 
 	//  Getters and Setters
 	//-------------------------------------------------- 
-	
+
 	public ArrayList<Player> getEntities() {
 		return entities;
 	}
-	
+
 	public int getEntityCount() {
 		return entities.size();
 	}
-	
+
 	public State getState() {
 		return state;
 	}
-	
+
 	public Menu getMainMenu() {
 		return mainMenu;
 	}
-	
+
 
 }

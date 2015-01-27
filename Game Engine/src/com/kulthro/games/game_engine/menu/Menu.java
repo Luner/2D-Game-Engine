@@ -6,10 +6,20 @@ public class Menu {
 
 	private boolean initialized = false;
 	private SquareButton buttons[];
+	private TextBox textBoxes[];
 	public static int index = 0;
 	
 	public Menu(SquareButton[] buttons){
+		this(buttons, new TextBox[] {});
+	}
+	
+	public Menu(TextBox[] textBoxes){
+		this(new SquareButton[] {}, textBoxes);
+	}
+	
+	public Menu(SquareButton[] buttons, TextBox[] textBoxes){
 		this.buttons = buttons;
+		this.textBoxes = textBoxes;
 	}
 
 	public void unInitialize(){
@@ -27,6 +37,7 @@ public class Menu {
 
 	public void update(){
 		renderButtons();
+		renderTextBoxes();
 	}
 
 	public void loadButtonTextures(){
@@ -35,9 +46,15 @@ public class Menu {
 		}
 	}
 
+	public void renderTextBoxes(){
+		for (TextBox textBox : textBoxes){
+			textBox.render();
+		}
+	}
+	
 	public void renderButtons(){
-		for (int i = 0; i < buttons.length; i++){
-			buttons[i].render();
+		for (SquareButton button : buttons){
+			button.render();
 		}
 	}
 
