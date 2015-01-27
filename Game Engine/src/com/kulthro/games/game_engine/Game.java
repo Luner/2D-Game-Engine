@@ -1,12 +1,10 @@
 package com.kulthro.games.game_engine;
 
 import java.util.ArrayList;
-
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
-
 import com.kulthro.games.game_engine.entities.*;
 import com.kulthro.games.game_engine.menu.*;
+import com.kulthro.games.game_engine.util.Input;
 
 public class Game {
 
@@ -91,8 +89,8 @@ public class Game {
 					menuSystem[Menu.index].initMenu();
 				}
 				//Returns the name of the button if it is clicked
-				if(Mouse.isButtonDown(0)){
-					String action = menuSystem[Menu.index].click(Mouse.getX(),Game.HEIGHT - Mouse.getY());
+				if(Input.getMouseDown(0)){
+					String action = menuSystem[Menu.index].click(Input.getMousePosition().getX(),Game.HEIGHT - Input.getMousePosition().getY());
 					if(!action.equals("none") && !action.equals("")){
 						System.out.println(action);
 						if(action.equals("Exit")){
