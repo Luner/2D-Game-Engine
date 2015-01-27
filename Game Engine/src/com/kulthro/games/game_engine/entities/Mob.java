@@ -9,18 +9,18 @@ public abstract class Mob extends Entity {
 	private float health;
 	protected Texture tex;
 
-	public Mob(float positionX, float positionY, float health) {
-		super(positionX, positionY);
+	public Mob(float positionX, float positionY, float width, float height, float health) {
+		super(positionX, positionY, width, height);
 		this.health = health;
 	}
 	
-	public Mob(float positionX, float positionY, float directionX, float directionY, float health) {
-		super(positionX, positionY, directionX, directionY);
+	public Mob(float positionX, float positionY, float directionX, float directionY, float width, float height, float health) {
+		super(positionX, positionY, directionX, directionY, width, height);
 		this.health = health;
 	}
 	
-	public Mob(Vector2f position, Vector2f direction, float health) {
-		super(position, direction);
+	public Mob(Vector2f position, Vector2f direction, float width, float height, float health) {
+		super(position, direction, width, height);
 		this.health = health;
 	}
 	

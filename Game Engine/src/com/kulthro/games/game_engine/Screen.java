@@ -14,13 +14,15 @@ import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glLoadIdentity;
 import static org.lwjgl.opengl.GL11.glMatrixMode;
 import static org.lwjgl.opengl.GL11.glOrtho;
+
 import java.awt.Font;
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.TrueTypeFont;
-import com.kulthro.games.game_engine.entities.Player;
+import com.kulthro.games.game_engine.entities.Enemy;
 
 public class Screen {
 
@@ -105,8 +107,8 @@ public class Screen {
 	}
 
 	public static void drawEntities() {
-		for(Player e : game.getEntities()) {
-			Render.renderQuad(e.getPosition().getX()-5, e.getPosition().getY()-5, e.getPosition().getX()+5, e.getPosition().getY()+5, e.getTexture());
+		for(Enemy e : game.getEntities()) {
+			Render.renderQuad(e.getPosition().getX(), e.getPosition().getY(), e.getPosition().getX() + e.getWidth(), e.getPosition().getY() + e.getHeight(), e.getTexture());
 		}
 
 	}

@@ -43,14 +43,14 @@ public class Game {
 
 	private Menu[] menuSystem = {mainMenu, options, credits};
 
-	private ArrayList<Player> entities;
+	private ArrayList<Enemy> entities;
 
 	public Game() {
-		entities = new ArrayList<Player>();
+		entities = new ArrayList<Enemy>();
 		//Test Adding players
-		entities.add(new Player(100,400));
-		entities.add(new Player(310,200));
-		entities.add(new Player(700,40));
+		entities.add(new Enemy(100,400, 32, 32, 100));
+		entities.add(new Enemy(310,200, 32, 32, 100));
+		entities.add(new Enemy(700, 40, 32, 32, 100));
 
 
 
@@ -58,7 +58,7 @@ public class Game {
 		Screen.initGL();
 
 		//temp addition to textures
-		for(Player e : getEntities()) {
+		for(Enemy e : getEntities()) {
 			e.setTexture(Render.getTexture("Slime", "png"));
 		}
 
@@ -141,7 +141,7 @@ public class Game {
 	//  Getters and Setters
 	//-------------------------------------------------- 
 
-	public ArrayList<Player> getEntities() {
+	public ArrayList<Enemy> getEntities() {
 		return entities;
 	}
 
