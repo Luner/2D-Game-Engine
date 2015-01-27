@@ -5,7 +5,7 @@ import org.newdawn.slick.opengl.Texture;
 public abstract class Mob extends Entity {
 	
 	private int health = 100;
-	private Texture tex;
+	protected Texture tex;
 	
 	public Mob(float x, float y) {
 		super(x, y);

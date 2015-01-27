@@ -1,7 +1,9 @@
 package com.kulthro.games.game_engine;
 
 import java.util.ArrayList;
+
 import org.lwjgl.input.Mouse;
+
 import com.kulthro.games.game_engine.entities.*;
 import com.kulthro.games.game_engine.menu.*;
 
@@ -33,17 +35,25 @@ public class Game {
 	
 	private Menu[] menuSystem = {mainMenu, options, credits};
 	
-	private ArrayList<Entity> entities;
+	private ArrayList<Player> entities;
 
 	public Game() {
-		entities = new ArrayList<Entity>();
+		entities = new ArrayList<Player>();
 		//Test Adding players
 		entities.add(new Player(100,400));
 		entities.add(new Player(310,200));
 		entities.add(new Player(700,40));
-
+		
+		
+		
 		Screen.initDisplay(this);
 		Screen.initGL();
+		
+		//temp addition to textures
+		for(Player e : getEntities()) {
+			e.setTexture(Render.getTexture("Slime", "png"));
+		}
+		
 		Screen.initFont();
 		this.run();
 		Screen.closeDisplay();
@@ -123,7 +133,7 @@ public class Game {
 	//  Getters and Setters
 	//-------------------------------------------------- 
 	
-	public ArrayList<Entity> getEntities() {
+	public ArrayList<Player> getEntities() {
 		return entities;
 	}
 	
