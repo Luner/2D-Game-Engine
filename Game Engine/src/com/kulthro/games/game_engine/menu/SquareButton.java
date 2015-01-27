@@ -2,29 +2,31 @@ package com.kulthro.games.game_engine.menu;
 
 import org.newdawn.slick.opengl.Texture;
 
+import com.kulthro.games.game_engine.Render;
+
 public class SquareButton {
-	public float leftX;
-	public float bottomY;
-	public float rightX;
-	public float topY;
+	private float leftX;
+	private float topY;
+	private float rightX;
+	private float bottomY;
 	private String key;
 	private String type;
 	private String action;
 	private Texture tex;
 	
-	public SquareButton(float leftX, float bottomY, float rightX, float topY){
-		this(leftX, bottomY, rightX, topY, "default", "png", "none");
+	public SquareButton(float leftX, float topY, float rightX, float bottomY){
+		this(leftX, topY, rightX, bottomY, "default", "png", "none");
 	}
 	
-	public SquareButton(float leftX, float bottomY, float rightX, float topY, String key, String type){
-		this(leftX, bottomY, rightX, topY, key, type, "none");
+	public SquareButton(float leftX, float topY, float rightX, float bottomY, String key, String type){
+		this(leftX, topY, rightX, bottomY, key, type, "none");
 	}
 	
-	public SquareButton(float leftX, float bottomY, float rightX, float topY, String key, String type, String action){
+	public SquareButton(float leftX, float topY, float rightX, float bottomY, String key, String type, String action){
 		this.leftX = leftX;
-		this.bottomY = bottomY;
-		this.rightX = rightX;
 		this.topY = topY;
+		this.rightX = rightX;
+		this.bottomY = bottomY;
 		this.key = key;
 		this.type = type;
 		this.action = action;
@@ -49,9 +51,13 @@ public class SquareButton {
 	public Texture getTexture(){
 		return tex;
 	}
-
+	
+	public void render(){
+		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex);
+	}
+	
 	public boolean isClicked(float mouseX, float mouseY){
-		if(mouseX >= leftX && mouseX <= rightX && mouseY >= bottomY && mouseY <= topY){
+		if(mouseX >= leftX && mouseX <= rightX && mouseY >= topY && mouseY <= bottomY){
 			return true;
 		}
 		return false;

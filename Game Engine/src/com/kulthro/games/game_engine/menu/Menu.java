@@ -37,7 +37,7 @@ public class Menu {
 
 	public void renderButtons(){
 		for (int i = 0; i < buttons.length; i++){
-			renderButton(buttons[i]);
+			buttons[i].render();
 		}
 	}
 
@@ -48,9 +48,5 @@ public class Menu {
 			}
 		}
 		return "";
-	}
-
-	private void renderButton(SquareButton button){
-		Render.renderQuad(button.leftX, button.bottomY, button.rightX, button.topY, button.getTexture());
 	}
 }
