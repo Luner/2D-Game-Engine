@@ -20,20 +20,29 @@ import static org.lwjgl.opengl.GL11.glMatrixMode;
 import static org.lwjgl.opengl.GL11.glOrtho;
 import static org.lwjgl.opengl.GL11.glVertex2f;
 
+import java.awt.Font;
+import java.io.InputStream;
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.TrueTypeFont;
+import org.newdawn.slick.util.ResourceLoader;
 
 import com.kulthro.games.game_engine.entities.Entity;
 
 public class Screen {
 
 	private static Game game;
-
+	static TrueTypeFont font;
+	static TrueTypeFont font2;
+	
 	/*Initialized the display*/
 	public static void initDisplay(Game game) {
 		Screen.game = game;
+		
 		try {
 			Display.setDisplayMode(new DisplayMode(Game.WIDTH,Game.HEIGHT));
 			Display.setTitle(Game.TITLE);
@@ -46,6 +55,13 @@ public class Screen {
 			System.exit(0);
 		}
 	}
+	
+	 
+	public static void initFont() {
+		// load a default java font
+		Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
+		font = new TrueTypeFont(awtFont, false);
+	}
 
 	public static void closeDisplay() {
 		Display.destroy();
@@ -57,7 +73,7 @@ public class Screen {
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		//(0,0) at bottom left & (WIDTH,HEIGHT) at top right
-		glOrtho(0,Game.WIDTH,0,Game.HEIGHT,1,-1);
+		glOrtho(0,Game.WIDTH,Game.HEIGHT,0,1,-1);
 		glMatrixMode(GL_MODELVIEW);
 
 		//This enables the use of textures
@@ -101,6 +117,7 @@ public class Screen {
 	}
 
 	public static void drawEntities() {
+		font.drawString(100, 50, "THE LIGHTWEIGHT JAVA GAMES LIBRARY", Color.darkGray);
 		for(Entity e : game.getEntities()) {
 			Render.renderQuad(e.getPosition().getX()-5, e.getPosition().getY()-5, e.getPosition().getX()+5, e.getPosition().getY()+5, Render.getTexture("Slime","png"));
 		}

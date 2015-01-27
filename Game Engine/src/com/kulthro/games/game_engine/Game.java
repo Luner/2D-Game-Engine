@@ -14,21 +14,21 @@ public class Game {
 	private State state = State.Menu;
 	
 	private Menu mainMenu = new Menu(new SquareButton[] {
-			new SquareButton(200,400,600,500, "Start", "png", "Start"),
+			new SquareButton(200,400,600,500, "Exit", "png", "Exit"),
 			new SquareButton(200,250,600,350, "Options", "png", "toOptions"),
-			new SquareButton(200,100,600,200, "Exit", "png", "Exit")
+			new SquareButton(200,100,600,200, "Start", "png", "Start")
 	});
 	
 	private Menu options = new Menu(new SquareButton[] {
-			new SquareButton(200,400,600,500, "Options", "png"),
+			new SquareButton(200,400,600,500, "Exit", "png", "toMain"),
 			new SquareButton(200,250,600,350, "Options", "png"),
-			new SquareButton(200,100,600,200, "Exit", "png", "toMain")
+			new SquareButton(200,100,600,200, "Options", "png")
 	});
 	
 	private Menu credits = new Menu(new SquareButton[] {
-			new SquareButton(200,400,600,500, "Start", "png"),
+			new SquareButton(200,400,600,500, "Exit", "png"),
 			new SquareButton(200,250,600,350, "Start", "png"),
-			new SquareButton(200,100,600,200, "Exit", "png")
+			new SquareButton(200,100,600,200, "Start", "png")
 	});
 	
 	private Menu[] menuSystem = {mainMenu, options, credits};
@@ -44,6 +44,7 @@ public class Game {
 
 		Screen.initDisplay(this);
 		Screen.initGL();
+		Screen.initFont();
 		this.run();
 		Screen.closeDisplay();
 
@@ -55,7 +56,6 @@ public class Game {
 	/*------------------------------------------------- 
 	/  Game Logic functions
 	/-------------------------------------------------- 
-	/
 	/ One tick is equal to one frame. Rather than edit the while loop in run(), please add all tick methods within tick();
 	*/
 	
@@ -74,7 +74,7 @@ public class Game {
 				}
 				//Returns the name of the button if it is clicked
 				if(Mouse.isButtonDown(0)){
-					String action = menuSystem[Menu.index].click(Mouse.getX(), Mouse.getY());
+					String action = menuSystem[Menu.index].click(Mouse.getX(),Game.HEIGHT - Mouse.getY());
 					if(!action.equals("none") && !action.equals("")){
 						System.out.println(action);
 						if(action.equals("Exit")){
