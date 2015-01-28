@@ -1,6 +1,6 @@
 package com.kulthro.games.game_engine.blocks;
 
-import com.kulthro.games.game_engine.Vector2f;
+import com.kulthro.games.game_engine.util.Vector2f;
 import com.kulthro.games.game_engine.entities.Damageable;
 
 public abstract class Block implements Damageable {
