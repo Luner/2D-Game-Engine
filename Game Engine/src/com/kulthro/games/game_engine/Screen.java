@@ -61,7 +61,7 @@ public class Screen {
 		System.exit(0);
 	}
 
-	public static boolean initGL(){
+	public static boolean initGL() {
 		//Sets up LWJGL with OpenGL.
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();

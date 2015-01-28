@@ -63,7 +63,7 @@ public class Game {
 		menuSystem[0]=mainMenu;
 		menuSystem[1]=options;
 		menuSystem[2]=credits;
-		//***********
+		//**********************
 		
 		this.run();
 		Screen.closeDisplay();
@@ -89,32 +89,32 @@ public class Game {
 			case Menu:
 				
 				//initializes the menu
-				if(menuSystem[Menu.index].isInitialized() == false){
+				if(menuSystem[Menu.index].isInitialized() == false) {
 					menuSystem[Menu.index].initMenu();
 				}
 				//Returns the name of the button if it is clicked
 				
-				if(Input.getMouseUp(0)){
+				if(Input.getMouseUp(0)) {
 					String action = menuSystem[Menu.index].click(Input.getMousePosition());
-					if(!action.equals("none") && !action.equals("")){
+					if(!action.equals("none") && !action.equals("")) {
 						Sounds.BUTTON_PRESS.playAsSoundEffect(1.0f, 1.0f, false); //sound effect when button pressed
 						System.out.println(action);
-						if(action.equals("Exit")){
+						if(action.equals("Exit")) {
 							Screen.closeDisplay();
 						}
-						else if(action.equalsIgnoreCase("toMain")){
+						else if(action.equalsIgnoreCase("toMain")) {
 							Menu.index = 0;
 							break;
 						}
-						else if(action.equalsIgnoreCase("toOptions")){
+						else if(action.equalsIgnoreCase("toOptions")) {
 							Menu.index = 1;
 							break;
 						}
-						else if(action.equals("toCredits")){
+						else if(action.equals("toCredits")) {
 							Menu.index = 2;
 							break;
 						}
-						else if(action.equals("Start")){
+						else if(action.equals("Start")) {
 							state = State.Game;
 							break;
 						}
