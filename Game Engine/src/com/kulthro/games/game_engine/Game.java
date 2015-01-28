@@ -18,7 +18,7 @@ public class Game {
 
 	private Menu mainMenu, options, credits;
 	private Menu[] menuSystem = new Menu[3];
-
+	private ClassicControls control;
 	private ArrayList<Mob> mobs;
 
 	public Game() {
@@ -28,7 +28,8 @@ public class Game {
 		Sounds.initSounds();
 		
 		mobs = new ArrayList<Mob>();
-
+		mobs.add(new Player(300, 300, 0, 0, 64, 64, 100));
+		control = new ClassicControls(mobs.get(0));
 		//temp addition to textures
 		for(Mob e : getMobs()) {
 			e.setTexture(Render.getTexture("Slime", "png"));
@@ -124,6 +125,7 @@ public class Game {
 
 			case Game:
 				/*Game Stuff Here*/
+				control.update();
 				tick();
 				Screen.drawGame();
 				break;
