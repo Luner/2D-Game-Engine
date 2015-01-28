@@ -30,6 +30,7 @@ public class Screen {
 
 	private static Game game;
 	public static TrueTypeFont font;
+	public static int fontSize = 56;
 	
 	/*Initialized the display*/
 	public static void initDisplay(Game game) {
@@ -51,7 +52,7 @@ public class Screen {
 	 
 	public static void initFont() {
 		// load a default java font
-		Font awtFont = new Font("Copperplate Gothic Bold", Font.BOLD, 56);
+		Font awtFont = new Font("Copperplate Gothic Bold", Font.BOLD, fontSize);
 		font = new TrueTypeFont(awtFont, true);
 	}
 

@@ -2,6 +2,7 @@ package com.kulthro.games.game_engine.menu;
 
 import org.newdawn.slick.Color;
 
+import com.kulthro.games.game_engine.Game;
 import com.kulthro.games.game_engine.Screen;
 
 public class TextBox {
@@ -18,6 +19,14 @@ public class TextBox {
 	
 	public TextBox(float leftX, float topY, String text){
 		this(leftX, topY, text, Color.black);
+	}
+	
+	public TextBox(float topY, String text) {
+		this((Game.WIDTH/2) - (Screen.fontSize*text.length())/2, topY, text, Color.black);
+	}
+	
+	public TextBox(float topY, String text, Color color) {
+		this((Game.WIDTH/2) - (Screen.font.getWidth(text))/2, topY, text, color);
 	}
 	
 	public TextBox(float leftX, float topY, String text, Color color){

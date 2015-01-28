@@ -16,53 +16,50 @@ public class Game {
 	public final static String TITLE = "Kulthro";
 	private State state = State.Menu;
 
-	private Menu mainMenu = new Menu(
-			new SquareButton[] {
-					new SquareButton(200,400,600,500, "Exit", "png", "Exit"),
-					new SquareButton(200,250,600,350, "Options", "png", "toOptions"),
-					new SquareButton(200,100,600,200, "Start", "png", "Start")
-			},
-			new TextBox[] {
-					new TextBox(235, 10, "Main Menu", Color.white)
-			});
-
-	private Menu options = new Menu(new SquareButton[] {
-			new SquareButton(200,400,600,500, "Exit", "png", "toMain"),
-			new SquareButton(200,250,600,350, "Options", "png"),
-			new SquareButton(200,100,600,200, "Options", "png")
-	},
-	new TextBox[] {
-			new TextBox(270, 10, "Options", Color.white)
-	});
-
-	private Menu credits = new Menu(new SquareButton[] {
-			new SquareButton(200,400,600,500, "Exit", "png"),
-			new SquareButton(200,250,600,350, "Start", "png"),
-			new SquareButton(200,100,600,200, "Start", "png")
-	});
-
-	private Menu[] menuSystem = {mainMenu, options, credits};
+	private Menu mainMenu, options, credits;
+	private Menu[] menuSystem = new Menu[3];
 
 	private ArrayList<Mob> mobs;
 
 	public Game() {
-		mobs = new ArrayList<Mob>();
-		//Test Adding players
-		mobs.add(new Enemy(100,400, 32, 32, 100));
-		mobs.add(new Enemy(310,200, 32, 32, 100));
-		mobs.add(new Player(700, 40, 32, 32, 100));
-
-
-
 		Screen.initDisplay(this);
 		Screen.initGL();
+		Screen.initFont();
+		
+		mobs = new ArrayList<Mob>();
 
 		//temp addition to textures
 		for(Mob e : getMobs()) {
 			e.setTexture(Render.getTexture("Slime", "png"));
 		}
-
-		Screen.initFont();
+		
+		//*********** Temp menu inits (will be in data files eventually)
+		mainMenu = new Menu(new SquareButton[] {
+						new SquareButton(200,400,600,500, "Exit", "png", "Exit"),
+						new SquareButton(200,250,600,350, "Options", "png", "toOptions"),
+						new SquareButton(200,100,600,200, "Start", "png", "Start")
+				},
+				new TextBox[] {
+						new TextBox(10, "Main", Color.white)
+				});
+		options = new Menu(new SquareButton[] {
+				new SquareButton(200,400,600,500, "Exit", "png", "toMain"),
+				new SquareButton(200,250,600,350, "Options", "png"),
+				new SquareButton(200,100,600,200, "Options", "png")
+		},
+		new TextBox[] {
+				new TextBox(270, 10, "Options", Color.white)
+		});
+		credits = new Menu(new SquareButton[] {
+				new SquareButton(200,400,600,500, "Exit", "png"),
+				new SquareButton(200,250,600,350, "Start", "png"),
+				new SquareButton(200,100,600,200, "Start", "png")
+		});
+		menuSystem[0]=mainMenu;
+		menuSystem[1]=options;
+		menuSystem[2]=credits;
+		//***********
+		
 		this.run();
 		Screen.closeDisplay();
 
@@ -85,7 +82,7 @@ public class Game {
 
 			switch(state) {
 			case Menu:
-
+				
 				//initializes the menu
 				if(menuSystem[Menu.index].isInitialized() == false){
 					menuSystem[Menu.index].initMenu();
