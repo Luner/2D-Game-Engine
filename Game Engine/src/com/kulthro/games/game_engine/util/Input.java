@@ -4,7 +4,6 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
 import com.kulthro.games.game_engine.Game;
-import com.kulthro.games.game_engine.Vector2f;
 
 public class Input 
 {

@@ -32,6 +32,22 @@ public class Render {
 		glEnd();
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
+	
+	public static void renderShadedQuad(float leftX,float topY,float rightX,float bottomY, Texture tex, float intensity){
+		tex.bind();
+		glBegin(GL_QUADS);
+		GL11.glColor3f(intensity, intensity, intensity);
+		GL11.glTexCoord2f(0.0f,0.0f);
+		GL11.glVertex2f(leftX, topY);    		// Top Left Of The Quad
+		GL11.glTexCoord2f(1.0f,0.0f);
+		GL11.glVertex2f(rightX, topY);   		// Top Right Of The Quad 
+		GL11.glTexCoord2f(1.0f,1.0f);
+		GL11.glVertex2f(rightX, bottomY);		// Bottom Right Of The Quad 
+		GL11.glTexCoord2f(0.0f,1.0f);
+		GL11.glVertex2f(leftX, bottomY);  		// Bottom Left Of The Quad 
+		glEnd();
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
 
 	public static void renderQuad(float leftX,float topY,float rightX,float bottomY, Texture tex, float r, float g, float b){
 		tex.bind();

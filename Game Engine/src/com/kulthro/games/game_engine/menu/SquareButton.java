@@ -3,14 +3,18 @@ package com.kulthro.games.game_engine.menu;
 import org.newdawn.slick.opengl.Texture;
 
 import com.kulthro.games.game_engine.Render;
+import com.kulthro.games.game_engine.Sounds;
+import com.kulthro.games.game_engine.util.Shade;
 
 public class SquareButton {
 	private float leftX;
 	private float topY;
 	private float rightX;
 	private float bottomY;
+	private Shade shade;
 	private boolean hoverOver = false;
 	private boolean downOn = false;
+	private boolean newAction = true;
 	private String key;
 	private String type;
 	private String action;
@@ -18,6 +22,7 @@ public class SquareButton {
 
 	public SquareButton(float leftX, float topY, float rightX, float bottomY){
 		this(leftX, topY, rightX, bottomY, "default", "png", "none");
+
 	}
 
 	public SquareButton(float leftX, float topY, float rightX, float bottomY, String key, String type){
@@ -32,8 +37,13 @@ public class SquareButton {
 		this.key = key;
 		this.type = type;
 		this.action = action;
+		this.shade = new Shade(1.0f);
 	}
 
+	public void isNewAction(){
+		newAction = true;
+	}
+	
 	public void setDownOn(boolean downOn){
 		this.downOn = downOn;
 	}
@@ -64,27 +74,26 @@ public class SquareButton {
 
 	public void render(){
 		if(downOn){
-			renderDark();
+			shade.setIntensity(0.4f);
 			this.downOn = false;
+			newAction = false;
 		} else {
 			if(hoverOver){
-				renderShade();
+				if(newAction){
+					Sounds.BUTTON.playAsSoundEffect(1.0f, 1.0f, false);
+					shade.setIntensity(0.7f);
+					newAction = false;
+				}
 			} else {
-				renderNormal();
+				shade.setIntensity(1.0f);
+				newAction = true;
 			}
 		}
+		renderButton();
 	}
 
-	public void renderNormal(){
-		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex);
-	}
-
-	public void renderShade(){
-		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex, 0.7f, 0.7f, 0.7f);
-	}
-
-	public void renderDark(){
-		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex, 0.4f, 0.4f, 0.4f);
+	public void renderButton(){
+		Render.renderShadedQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex, shade.getIntensity());
 	}
 	public boolean isOn(float mouseX, float mouseY){
 		if(mouseX >= leftX && mouseX <= rightX && mouseY >= topY && mouseY <= bottomY){

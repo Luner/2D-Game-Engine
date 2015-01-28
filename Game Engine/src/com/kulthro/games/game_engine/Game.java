@@ -93,7 +93,7 @@ public class Game {
 				if(Input.getMouseUp(0)){
 					String action = menuSystem[Menu.index].click(Input.getMousePosition());
 					if(!action.equals("none") && !action.equals("")){
-						Sounds.BUTTON.playAsSoundEffect(1.0f, 1.0f, false);
+						Sounds.BUTTON_PRESS.playAsSoundEffect(1.0f, 1.0f, false); //sound effect when button pressed
 						System.out.println(action);
 						if(action.equals("Exit")){
 							Screen.closeDisplay();
