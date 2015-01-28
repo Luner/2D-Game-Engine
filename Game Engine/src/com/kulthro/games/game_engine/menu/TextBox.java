@@ -34,6 +34,10 @@ public class TextBox implements MenuItem{
 		this((Game.WIDTH/2) - (Screen.font.getWidth(text))/2, topY, text, color, "");
 	}
 	
+	public TextBox(float topY, String text, Color color, String action) {
+		this((Game.WIDTH/2) - (Screen.font.getWidth(text))/2, topY, text, color, action);
+	}
+	
 	public TextBox(float leftX, float topY, String text, Color color, String action){
 		this.leftX = leftX;
 		this.topY = topY;
