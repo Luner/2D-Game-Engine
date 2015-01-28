@@ -34,7 +34,7 @@ public class Game {
 		control = new ClassicControls(mobs.get(0));
 		
 		//an environment with gravity at 2.0f
-		environment = new EarthEnvironment(0.2f);
+		environment = new EnvironmentEarth(0.2f);
 		
 		level = new Level(environment, mobs);
 		//temp addition to textures
