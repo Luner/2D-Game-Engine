@@ -12,12 +12,12 @@ import com.kulthro.games.game_engine.files.ImageReader;
 
 public class Render {
 
-	public static Texture getTexture(String key, String type) {
+	public static Texture getTexture(String key, String type){
 		ImageReader load = new ImageReader();
 		return load.loadTexture(key, type);
 	}
 
-	public static void renderQuad(float leftX,float topY,float rightX,float bottomY, Texture tex) {
+	public static void renderQuad(float leftX,float topY,float rightX,float bottomY, Texture tex){
 		tex.bind();
 		glBegin(GL_QUADS);
 		GL11.glColor3f(1.0f, 1.0f, 1.0f);
@@ -33,7 +33,7 @@ public class Render {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 	
-	public static void renderShadedQuad(float leftX,float topY,float rightX,float bottomY, Texture tex, float intensity) {
+	public static void renderShadedQuad(float leftX,float topY,float rightX,float bottomY, Texture tex, float intensity){
 		tex.bind();
 		glBegin(GL_QUADS);
 		GL11.glColor3f(intensity, intensity, intensity);
@@ -49,7 +49,7 @@ public class Render {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
-	public static void renderQuad(float leftX,float topY,float rightX,float bottomY, Texture tex, float r, float g, float b) {
+	public static void renderQuad(float leftX,float topY,float rightX,float bottomY, Texture tex, float r, float g, float b){
 		tex.bind();
 		glBegin(GL_QUADS);
 		GL11.glColor3f(r, g, b);

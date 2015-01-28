@@ -19,11 +19,11 @@ public class Camera {
 		direction = new Vector2f(directionX,directionY);
 	}
 	
-	private void move() {
+	private void move(){
 		this.position = this.position.add(direction);
 	}
 	
-	public void update() {
+	public void update(){
 		move();
 	}
 }
