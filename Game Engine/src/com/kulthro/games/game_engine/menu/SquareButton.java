@@ -33,6 +33,10 @@ public class SquareButton {
 		this.action = action;
 	}
 	
+	public void setDownOn(boolean downOn){
+		this.downOn = downOn;
+	}
+	
 	public void setTexture(Texture texture){
 		tex = texture;
 	}
@@ -54,10 +58,22 @@ public class SquareButton {
 	}
 	
 	public void render(){
+		if(downOn == false){
+			renderNormal();
+		} else {
+			renderDark();
+		}
+	}
+	
+	public void renderNormal(){
 		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex);
 	}
 	
-	public boolean isClicked(float mouseX, float mouseY){
+	public void renderDark(){
+		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex, 0.7f, 0.7f, 0.7f);
+	}
+	
+	public boolean isOn(float mouseX, float mouseY){
 		if(mouseX >= leftX && mouseX <= rightX && mouseY >= topY && mouseY <= bottomY){
 			return true;
 		}

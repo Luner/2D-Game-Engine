@@ -62,16 +62,21 @@ public class Menu {
 
 	public String click(Vector2f position){
 		for (int i = 0; i < buttons.length; i++){
-			if (buttons[i].isClicked(position.getX(), Game.HEIGHT - position.getY())){
+			if (buttons[i].isOn(position.getX(), Game.HEIGHT - position.getY())){
 				return buttons[i].getAction();
 			}
 		}
 		return "";
 	}
 
-	public void mouseDown(Vector2f mousePosition) {
-		// TODO Auto-generated method stub
-		
+	public void mouseDown(Vector2f position) {
+		for (int i = 0; i < buttons.length; i++){
+			if (buttons[i].isOn(position.getX(), Game.HEIGHT - position.getY())){
+				buttons[i].setDownOn(true);
+			} else {
+				buttons[i].setDownOn(false);
+			}
+		}
 	}
 
 }
