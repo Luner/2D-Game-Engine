@@ -2,7 +2,7 @@ package com.kulthro.games.game_engine.entities;
 
 import org.newdawn.slick.opengl.Texture;
 
-import com.kulthro.games.game_engine.Vector2f;
+import com.kulthro.games.game_engine.util.Vector2f;
 
 public abstract class Mob extends Entity {
 

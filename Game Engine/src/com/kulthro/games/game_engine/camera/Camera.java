@@ -1,6 +1,6 @@
 package com.kulthro.games.game_engine.camera;
 
-import com.kulthro.games.game_engine.Vector2f;
+import com.kulthro.games.game_engine.util.Vector2f;
 
 public class Camera {
 	private Vector2f position;

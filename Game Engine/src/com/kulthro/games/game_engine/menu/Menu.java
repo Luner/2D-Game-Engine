@@ -1,8 +1,7 @@
 package com.kulthro.games.game_engine.menu;
 
-import com.kulthro.games.game_engine.Game;
 import com.kulthro.games.game_engine.Render;
-import com.kulthro.games.game_engine.Vector2f;
+import com.kulthro.games.game_engine.util.Vector2f;
 
 public class Menu { 
 
@@ -10,15 +9,15 @@ public class Menu {
 	private SquareButton buttons[];
 	private TextBox textBoxes[];
 	public static int index = 0;
-	
+
 	public Menu(SquareButton[] buttons){
 		this(buttons, new TextBox[] {});
 	}
-	
+
 	public Menu(TextBox[] textBoxes){
 		this(new SquareButton[] {}, textBoxes);
 	}
-	
+
 	public Menu(SquareButton[] buttons, TextBox[] textBoxes){
 		this.buttons = buttons;
 		this.textBoxes = textBoxes;
@@ -27,7 +26,7 @@ public class Menu {
 	public void unInitialize(){
 		this.initialized = false;
 	}
-	
+
 	public boolean isInitialized(){
 		return initialized;
 	}
@@ -37,7 +36,16 @@ public class Menu {
 		initialized = true;
 	}
 
-	public void update(){
+	public void update(Vector2f mousePosition){
+
+		for(SquareButton button : buttons){	
+			if(button.isOn(mousePosition.getX(), mousePosition.getY())){
+				button.setHoverOver(true);
+			} else {
+				button.setHoverOver(false);
+			}
+		}
+
 		renderButtons();
 		renderTextBoxes();
 	}
@@ -53,7 +61,7 @@ public class Menu {
 			textBox.render();
 		}
 	}
-	
+
 	public void renderButtons(){
 		for (SquareButton button : buttons){
 			button.render();
@@ -62,7 +70,7 @@ public class Menu {
 
 	public String click(Vector2f position){
 		for (int i = 0; i < buttons.length; i++){
-			if (buttons[i].isOn(position.getX(), Game.HEIGHT - position.getY())){
+			if (buttons[i].isOn(position.getX(), position.getY())){
 				return buttons[i].getAction();
 			}
 		}
@@ -71,12 +79,11 @@ public class Menu {
 
 	public void mouseDown(Vector2f position) {
 		for (int i = 0; i < buttons.length; i++){
-			if (buttons[i].isOn(position.getX(), Game.HEIGHT - position.getY())){
+			if (buttons[i].isOn(position.getX(), position.getY())){
 				buttons[i].setDownOn(true);
 			} else {
 				buttons[i].setDownOn(false);
 			}
 		}
 	}
-
 }
