@@ -6,21 +6,11 @@ import com.kulthro.games.game_engine.util.Vector2f;
 public class Menu { 
 
 	private boolean initialized = false;
-	private SquareButton buttons[];
-	private TextBox textBoxes[];
+	private MenuItem items[];
 	public static int index = 0;
 
-	public Menu(SquareButton[] buttons){
-		this(buttons, new TextBox[] {});
-	}
-
-	public Menu(TextBox[] textBoxes){
-		this(new SquareButton[] {}, textBoxes);
-	}
-
-	public Menu(SquareButton[] buttons, TextBox[] textBoxes){
-		this.buttons = buttons;
-		this.textBoxes = textBoxes;
+	public Menu(MenuItem[] items){
+		this.items = items;
 	}
 
 	public void unInitialize(){
@@ -38,51 +28,45 @@ public class Menu {
 
 	public void update(Vector2f mousePosition){
 
-		for(SquareButton button : buttons){	
-			if(button.isOn(mousePosition.getX(), mousePosition.getY())){
-				button.setHoverOver(true);
+		for(MenuItem item : items){	
+			if(item.isOn(mousePosition.getX(), mousePosition.getY())){
+				item.setHoverOver(true);
 			} else {
-				button.setHoverOver(false);
+				item.setHoverOver(false);
 			}
 		}
-
-		renderButtons();
-		renderTextBoxes();
+		
+		renderItems();
 	}
 
 	public void loadButtonTextures(){
-		for(int i = 0; i < buttons.length; i++){
-			buttons[i].setTexture(Render.getTexture(buttons[i].getKey(), buttons[i].getType()));
+		for(MenuItem item : items){
+			if(item instanceof SquareButton)
+			((SquareButton)item).setTexture(Render.getTexture(((SquareButton)item).getKey(), ((SquareButton)item).getType()));
 		}
 	}
 
-	public void renderTextBoxes(){
-		for (TextBox textBox : textBoxes){
-			textBox.render();
-		}
-	}
-
-	public void renderButtons(){
-		for (SquareButton button : buttons){
-			button.render();
+	public void renderItems(){
+		for (MenuItem item : items){
+			item.render();
 		}
 	}
 
 	public String click(Vector2f position){
-		for (int i = 0; i < buttons.length; i++){
-			if (buttons[i].isOn(position.getX(), position.getY())){
-				return buttons[i].getAction();
+		for (MenuItem item : items){
+			if (item.isOn(position.getX(), position.getY())){
+				return item.getAction();
 			}
 		}
 		return "";
 	}
 
 	public void mouseDown(Vector2f position) {
-		for (int i = 0; i < buttons.length; i++){
-			if (buttons[i].isOn(position.getX(), position.getY())){
-				buttons[i].setDownOn(true);
+		for (MenuItem item : items){
+			if (item.isOn(position.getX(), position.getY())){
+				item.setDownOn(true);
 			} else {
-				buttons[i].setDownOn(false);
+				item.setDownOn(false);
 			}
 		}
 	}

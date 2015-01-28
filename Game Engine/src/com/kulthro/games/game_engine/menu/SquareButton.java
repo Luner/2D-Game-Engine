@@ -6,7 +6,7 @@ import com.kulthro.games.game_engine.Render;
 import com.kulthro.games.game_engine.Sounds;
 import com.kulthro.games.game_engine.util.Shade;
 
-public class SquareButton {
+public class SquareButton implements MenuItem{
 	private float leftX;
 	private float topY;
 	private float rightX;

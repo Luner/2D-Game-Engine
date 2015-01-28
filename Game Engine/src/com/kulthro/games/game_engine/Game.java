@@ -43,22 +43,18 @@ public class Game {
 		}
 		
 		//*********** Temp menu inits (will be in data files eventually)
-		mainMenu = new Menu(new SquareButton[] {
+		mainMenu = new Menu(new MenuItem[] {
 						new SquareButton(200,400,600,500, "Exit", "png", "Exit"),
 						new SquareButton(200,250,600,350, "Options", "png", "toOptions"),
-						new SquareButton(200,100,600,200, "Start", "png", "Start")
-				},
-				new TextBox[] {
-						new TextBox(10, "Main Menu", Color.white)
-				});
-		options = new Menu(new SquareButton[] {
+						new SquareButton(200,100,600,200, "Start", "png", "Start"),
+						new TextBox(10, "Main Menu", Color.white)});
+		
+		options = new Menu(new MenuItem[] {
 				new SquareButton(200,400,600,500, "Exit", "png", "toMain"),
 				new SquareButton(200,250,600,350, "Options", "png"),
-				new SquareButton(200,100,600,200, "Options", "png")
-		},
-		new TextBox[] {
-				new TextBox(270, 10, "Options", Color.white)
-		});
+				new SquareButton(200,100,600,200, "Options", "png"),
+				new TextBox(10, "Options", Color.white)});
+		
 		credits = new Menu(new SquareButton[] {
 				new SquareButton(200,400,600,500, "Exit", "png"),
 				new SquareButton(200,250,600,350, "Start", "png"),
@@ -124,6 +120,7 @@ public class Game {
 						}
 					}
 				}
+				
 				if(Input.getMouse(0)){
 					menuSystem[Menu.index].mouseDown(Input.getMousePosition());
 				}
