@@ -3,7 +3,6 @@ package com.kulthro.games.game_engine.menu;
 import org.newdawn.slick.opengl.Texture;
 
 import com.kulthro.games.game_engine.Render;
-import com.kulthro.games.game_engine.Sounds;
 
 public class SquareButton {
 	private float leftX;
