@@ -9,20 +9,21 @@ public class SquareButton {
 	private float topY;
 	private float rightX;
 	private float bottomY;
+	private boolean hoverOver = false;
 	private boolean downOn = false;
 	private String key;
 	private String type;
 	private String action;
 	private Texture tex;
-	
+
 	public SquareButton(float leftX, float topY, float rightX, float bottomY){
 		this(leftX, topY, rightX, bottomY, "default", "png", "none");
 	}
-	
+
 	public SquareButton(float leftX, float topY, float rightX, float bottomY, String key, String type){
 		this(leftX, topY, rightX, bottomY, key, type, "none");
 	}
-	
+
 	public SquareButton(float leftX, float topY, float rightX, float bottomY, String key, String type, String action){
 		this.leftX = leftX;
 		this.topY = topY;
@@ -32,47 +33,58 @@ public class SquareButton {
 		this.type = type;
 		this.action = action;
 	}
-	
+
 	public void setDownOn(boolean downOn){
 		this.downOn = downOn;
 	}
-	
+
+	public void setHoverOver(boolean hoverOver){
+		this.hoverOver = hoverOver;
+	}
+
 	public void setTexture(Texture texture){
 		tex = texture;
 	}
-	
+
 	public String getType(){
 		return type;
 	}
-	
+
 	public String getKey(){
 		return key;
 	}
-	
+
 	public String getAction(){
 		return action;
 	}
-	
+
 	public Texture getTexture(){
 		return tex;
 	}
-	
+
 	public void render(){
-		if(downOn == false){
-			renderNormal();
-		} else {
+		if(downOn){
 			renderDark();
+		} else {
+			if(hoverOver){
+				renderShade();
+			} else {
+				renderNormal();
+			}
 		}
 	}
-	
+
 	public void renderNormal(){
 		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex);
 	}
-	
-	public void renderDark(){
-		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex, 0.7f, 0.7f, 0.7f);
+
+	public void renderShade(){
+		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex, 0.8f, 0.8f, 0.8f);
 	}
-	
+
+	public void renderDark(){
+		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex, 0.6f, 0.6f, 0.6f);
+	}
 	public boolean isOn(float mouseX, float mouseY){
 		if(mouseX >= leftX && mouseX <= rightX && mouseY >= topY && mouseY <= bottomY){
 			return true;

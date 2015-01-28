@@ -2,6 +2,8 @@ package com.kulthro.games.game_engine.util;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
+
+import com.kulthro.games.game_engine.Game;
 import com.kulthro.games.game_engine.Vector2f;
 
 public class Input 
@@ -159,7 +161,7 @@ public class Input
 	
 	public static Vector2f getMousePosition()
 	{
-		return new Vector2f(Mouse.getX(), Mouse.getY());
+		return new Vector2f(Mouse.getX(), Game.HEIGHT - Mouse.getY());
 	}
 	
 	public static void setMousePosition(Vector2f position)

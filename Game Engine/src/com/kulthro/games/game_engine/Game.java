@@ -117,7 +117,7 @@ public class Game {
 				if(Input.getMouse(0)){
 					menuSystem[Menu.index].mouseDown(Input.getMousePosition());
 				}
-				menuSystem[Menu.index].update();
+				menuSystem[Menu.index].update(Input.getMousePosition());
 				break;
 
 			case Game:
