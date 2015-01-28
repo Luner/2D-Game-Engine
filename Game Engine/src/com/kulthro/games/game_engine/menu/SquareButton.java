@@ -9,6 +9,7 @@ public class SquareButton {
 	private float topY;
 	private float rightX;
 	private float bottomY;
+	private boolean downOn = false;
 	private String key;
 	private String type;
 	private String action;

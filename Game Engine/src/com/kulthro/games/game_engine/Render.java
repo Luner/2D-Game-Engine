@@ -42,6 +42,7 @@ public class Render {
 		GL11.glVertex2f(rightX, bottomY);		// Bottom Right Of The Quad
 		GL11.glVertex2f(leftX, bottomY);  		// Bottom Left Of The Quad
 		glEnd();
+		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 	
 public static void renderQuadVerticleGradient(float leftX,float topY,float rightX, float bottomY, float rBottom, float gBottom, float bBottom, float rTop, float gTop, float bTop) {
@@ -54,6 +55,7 @@ public static void renderQuadVerticleGradient(float leftX,float topY,float right
 		GL11.glVertex2f(rightX, bottomY);		// Bottom Right Of The Quad
 		GL11.glVertex2f(leftX, bottomY);  		// Bottom Left Of The Quad
 		glEnd();
+		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
 public static void renderQuadHorizontalGradient(float leftX,float topY,float rightX, float bottomY, float rLeft, float gLeft, float bLeft, float rRight, float gRight, float bRight) {
@@ -66,6 +68,7 @@ public static void renderQuadHorizontalGradient(float leftX,float topY,float rig
 	GL11.glVertex2f(leftX, bottomY);  		// Bottom Left Of The Quad
 	GL11.glVertex2f(leftX, topY);   		// Top Left Of The Quad
 	glEnd();
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 	
 }

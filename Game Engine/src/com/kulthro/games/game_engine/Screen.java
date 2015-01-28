@@ -108,7 +108,7 @@ public class Screen {
 
 	public static void drawEntities() {
 		for(Enemy e : game.getEntities()) {
-			Render.renderQuad(e.getPosition().getX(), e.getPosition().getY(), e.getPosition().getX() + e.getWidth(), e.getPosition().getY() + e.getHeight(), e.getTexture());
+			Render.renderQuad(e.getPosition().getX(), e.getPosition().getY(), e.getPosition().getX() + e.getWidth(), e.getPosition().getY() + e.getHeight(), 1.0f,0.0f,0.0f);
 		}
 
 	}

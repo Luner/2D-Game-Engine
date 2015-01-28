@@ -89,8 +89,9 @@ public class Game {
 					menuSystem[Menu.index].initMenu();
 				}
 				//Returns the name of the button if it is clicked
+				
 				if(Input.getMouseUp(0)){
-					String action = menuSystem[Menu.index].click(Input.getMousePosition().getX(),Game.HEIGHT - Input.getMousePosition().getY());
+					String action = menuSystem[Menu.index].click(Input.getMousePosition());
 					if(!action.equals("none") && !action.equals("")){
 						System.out.println(action);
 						if(action.equals("Exit")){
@@ -113,6 +114,9 @@ public class Game {
 							break;
 						}
 					}
+				}
+				if(Input.getMouse(0)){
+					menuSystem[Menu.index].mouseDown(Input.getMousePosition());
 				}
 				menuSystem[Menu.index].update();
 				break;

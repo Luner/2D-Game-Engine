@@ -1,6 +1,8 @@
 package com.kulthro.games.game_engine.menu;
 
+import com.kulthro.games.game_engine.Game;
 import com.kulthro.games.game_engine.Render;
+import com.kulthro.games.game_engine.Vector2f;
 
 public class Menu { 
 
@@ -58,12 +60,18 @@ public class Menu {
 		}
 	}
 
-	public String click(float Mousex, float Mousey){
+	public String click(Vector2f position){
 		for (int i = 0; i < buttons.length; i++){
-			if (buttons[i].isClicked(Mousex, Mousey)){
+			if (buttons[i].isClicked(position.getX(), Game.HEIGHT - position.getY())){
 				return buttons[i].getAction();
 			}
 		}
 		return "";
 	}
+
+	public void mouseDown(Vector2f mousePosition) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
