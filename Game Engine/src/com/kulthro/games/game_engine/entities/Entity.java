@@ -2,7 +2,7 @@ package com.kulthro.games.game_engine.entities;
 
 import com.kulthro.games.game_engine.*;
 
-public abstract class Entity {
+public abstract class Entity implements Damageable {
 
 	private Vector2f position;
 	private Vector2f direction;

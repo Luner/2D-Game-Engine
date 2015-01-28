@@ -30,6 +30,10 @@ public abstract class Mob extends Entity {
 		this.health = this.health - damage;
 	}
 	
+	public void getDamage(float force) {
+		damage(force);
+	}
+	
 	public Texture getTexture() {
 		return tex;
 	}
