@@ -1,6 +1,5 @@
 package com.kulthro.games.game_engine.menu;
 
-import com.kulthro.games.game_engine.Game;
 import com.kulthro.games.game_engine.Render;
 import com.kulthro.games.game_engine.util.Vector2f;
 
