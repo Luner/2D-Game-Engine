@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.newdawn.slick.Color;
 
 import com.kulthro.games.game_engine.entities.*;
+import com.kulthro.games.game_engine.game.*;
 import com.kulthro.games.game_engine.menu.*;
 import com.kulthro.games.game_engine.util.Input;
 
@@ -19,19 +20,25 @@ public class Game {
 	private Menu mainMenu, options, credits;
 	private Menu[] menuSystem = new Menu[3];
 	private ClassicControls control;
-	private ArrayList<Mob> mobs;
-
+	private ArrayList<Entity> mobs;
+	private Level level;
+	private Environment environment;
 	public Game() {
 		Screen.initDisplay(this);
 		Screen.initGL();
 		Screen.initFont();
 		Sounds.initSounds();
 		
-		mobs = new ArrayList<Mob>();
+		mobs = new ArrayList<Entity>();
 		mobs.add(new Player(300, 300, 0, 0, 64, 64, 100));
 		control = new ClassicControls(mobs.get(0));
+		
+		//an environment with gravity at 2.0f
+		environment = new EarthEnvironment(0.2f);
+		
+		level = new Level(environment, mobs);
 		//temp addition to textures
-		for(Mob e : getMobs()) {
+		for(Entity e : getMobs()) {
 			e.setTexture(Render.getTexture("Slime", "png"));
 		}
 		
@@ -137,17 +144,15 @@ public class Game {
 	}
 
 	public void tick() {
-		//Update all mobs
-		for(Mob e : mobs) {
-			e.update();
-		}
+		//Updates level
+		level.update();
 	}
 
 	//-------------------------------------------------- 
 	//  Getters and Setters
 	//-------------------------------------------------- 
 
-	public ArrayList<Mob> getMobs() {
+	public ArrayList<Entity> getMobs() {
 		return mobs;
 	}
 

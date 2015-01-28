@@ -1,5 +1,7 @@
 package com.kulthro.games.game_engine.entities;
 
+import org.newdawn.slick.opengl.Texture;
+
 import com.kulthro.games.game_engine.*;
 import com.kulthro.games.game_engine.util.Vector2f;
 
@@ -7,6 +9,7 @@ public abstract class Entity implements Damageable {
 
 	private Vector2f position;
 	private Vector2f direction;
+	protected Texture tex;
 	private float width;
 	private float height;
 	
@@ -23,6 +26,14 @@ public abstract class Entity implements Damageable {
 		this.direction = direction;
 		this.height = height;
 		this.width = width;
+	}
+	
+	public Texture getTexture() {
+		return tex;
+	}
+	
+	public void setTexture(Texture texture) {
+		this.tex = texture;
 	}
 	
 	private void move() {

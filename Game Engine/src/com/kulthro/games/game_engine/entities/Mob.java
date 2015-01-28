@@ -9,7 +9,6 @@ public abstract class Mob extends Entity {
 	private float health;
 	private float speed = 1f;
 	
-	protected Texture tex;
 
 	public Mob(float positionX, float positionY, float width, float height, float health) {
 		super(positionX, positionY, width, height);
@@ -32,13 +31,5 @@ public abstract class Mob extends Entity {
 	
 	public void getDamage(float force) {
 		damage(force);
-	}
-	
-	public Texture getTexture() {
-		return tex;
-	}
-	
-	public void setTexture(Texture texture) {
-		this.tex = texture;
 	}
 }
