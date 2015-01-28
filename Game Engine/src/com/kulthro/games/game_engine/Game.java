@@ -25,6 +25,7 @@ public class Game {
 		Screen.initDisplay(this);
 		Screen.initGL();
 		Screen.initFont();
+		Sounds.initSounds();
 		
 		mobs = new ArrayList<Mob>();
 
@@ -40,7 +41,7 @@ public class Game {
 						new SquareButton(200,100,600,200, "Start", "png", "Start")
 				},
 				new TextBox[] {
-						new TextBox(10, "Main", Color.white)
+						new TextBox(10, "Main Menu", Color.white)
 				});
 		options = new Menu(new SquareButton[] {
 				new SquareButton(200,400,600,500, "Exit", "png", "toMain"),
@@ -92,6 +93,7 @@ public class Game {
 				if(Input.getMouseUp(0)){
 					String action = menuSystem[Menu.index].click(Input.getMousePosition());
 					if(!action.equals("none") && !action.equals("")){
+						Sounds.BUTTON.playAsSoundEffect(1.0f, 1.0f, false);
 						System.out.println(action);
 						if(action.equals("Exit")){
 							Screen.closeDisplay();

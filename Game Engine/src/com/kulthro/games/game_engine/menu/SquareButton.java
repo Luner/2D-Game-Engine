@@ -3,6 +3,7 @@ package com.kulthro.games.game_engine.menu;
 import org.newdawn.slick.opengl.Texture;
 
 import com.kulthro.games.game_engine.Render;
+import com.kulthro.games.game_engine.Sounds;
 
 public class SquareButton {
 	private float leftX;
@@ -65,6 +66,7 @@ public class SquareButton {
 	public void render(){
 		if(downOn){
 			renderDark();
+			this.downOn = false;
 		} else {
 			if(hoverOver){
 				renderShade();
@@ -79,11 +81,11 @@ public class SquareButton {
 	}
 
 	public void renderShade(){
-		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex, 0.8f, 0.8f, 0.8f);
+		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex, 0.7f, 0.7f, 0.7f);
 	}
 
 	public void renderDark(){
-		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex, 0.6f, 0.6f, 0.6f);
+		Render.renderQuad(this.leftX, this.topY, this.rightX, this.bottomY, this.tex, 0.4f, 0.4f, 0.4f);
 	}
 	public boolean isOn(float mouseX, float mouseY){
 		if(mouseX >= leftX && mouseX <= rightX && mouseY >= topY && mouseY <= bottomY){
