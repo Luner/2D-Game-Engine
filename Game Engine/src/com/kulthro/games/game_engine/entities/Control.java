@@ -20,4 +20,7 @@ public class Control {
 	public void moveX(float amount){
 		controlling.setDirection(controlling.getDirection().add(new Vector2f(amount,0)));
 	}
+	public void setYVelocity(float velocity){
+		controlling.setDirection(new Vector2f(controlling.getDirection().getX(), velocity));
+	}
 }
