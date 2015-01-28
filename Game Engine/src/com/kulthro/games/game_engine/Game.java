@@ -1,7 +1,9 @@
 package com.kulthro.games.game_engine;
 
 import java.util.ArrayList;
+
 import org.newdawn.slick.Color;
+
 import com.kulthro.games.game_engine.entities.*;
 import com.kulthro.games.game_engine.menu.*;
 import com.kulthro.games.game_engine.util.Input;
@@ -41,14 +43,14 @@ public class Game {
 
 	private Menu[] menuSystem = {mainMenu, options, credits};
 
-	private ArrayList<Enemy> entities;
+	private ArrayList<Mob> mobs;
 
 	public Game() {
-		entities = new ArrayList<Enemy>();
+		mobs = new ArrayList<Mob>();
 		//Test Adding players
-		entities.add(new Enemy(100,400, 32, 32, 100));
-		entities.add(new Enemy(310,200, 32, 32, 100));
-		entities.add(new Enemy(700, 40, 32, 32, 100));
+		mobs.add(new Enemy(100,400, 32, 32, 100));
+		mobs.add(new Enemy(310,200, 32, 32, 100));
+		mobs.add(new Player(700, 40, 32, 32, 100));
 
 
 
@@ -56,7 +58,7 @@ public class Game {
 		Screen.initGL();
 
 		//temp addition to textures
-		for(Enemy e : getEntities()) {
+		for(Mob e : getMobs()) {
 			e.setTexture(Render.getTexture("Slime", "png"));
 		}
 
@@ -134,8 +136,8 @@ public class Game {
 	}
 
 	public void tick() {
-		//Update all Entities
-		for(Entity e : entities) {
+		//Update all mobs
+		for(Mob e : mobs) {
 			e.update();
 		}
 	}
@@ -144,12 +146,12 @@ public class Game {
 	//  Getters and Setters
 	//-------------------------------------------------- 
 
-	public ArrayList<Enemy> getEntities() {
-		return entities;
+	public ArrayList<Mob> getMobs() {
+		return mobs;
 	}
 
 	public int getEntityCount() {
-		return entities.size();
+		return mobs.size();
 	}
 
 	public State getState() {

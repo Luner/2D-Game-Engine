@@ -22,7 +22,9 @@ import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.TrueTypeFont;
+
 import com.kulthro.games.game_engine.entities.Enemy;
+import com.kulthro.games.game_engine.entities.Mob;
 
 public class Screen {
 
@@ -107,8 +109,8 @@ public class Screen {
 	}
 
 	public static void drawEntities() {
-		for(Enemy e : game.getEntities()) {
-			Render.renderQuad(e.getPosition().getX(), e.getPosition().getY(), e.getPosition().getX() + e.getWidth(), e.getPosition().getY() + e.getHeight(), 1.0f,0.0f,0.0f);
+		for(Mob e : game.getMobs()) {
+			Render.renderQuad(e.getPosition().getX(), e.getPosition().getY(), e.getPosition().getX() + e.getWidth(), e.getPosition().getY() + e.getHeight(), e.getTexture());
 		}
 
 	}

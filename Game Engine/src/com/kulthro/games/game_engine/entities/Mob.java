@@ -7,6 +7,8 @@ import com.kulthro.games.game_engine.Vector2f;
 public abstract class Mob extends Entity {
 
 	private float health;
+	private float speed = 1f;
+	
 	protected Texture tex;
 
 	public Mob(float positionX, float positionY, float width, float height, float health) {
