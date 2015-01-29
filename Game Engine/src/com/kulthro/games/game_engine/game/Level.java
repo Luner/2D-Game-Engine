@@ -16,6 +16,11 @@ public class Level {
 	public void update(){
 		environment.update(entities);
 		for(Entity entity : entities){
+			for(Entity entity2 : entities){
+				if(!entity.equals(entity2)){
+					entity.isColliding(entity2);
+				}
+			}
 			entity.update();
 		}
 	}

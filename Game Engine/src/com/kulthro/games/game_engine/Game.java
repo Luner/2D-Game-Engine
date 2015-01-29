@@ -11,8 +11,8 @@ import com.kulthro.games.game_engine.util.Input;
 
 public class Game {
 
-	public final static int WIDTH = 800;
-	public final static int HEIGHT = 600;
+	public final static int WIDTH = 1200;
+	public final static int HEIGHT = 800;
 	public final static int FRAME_RATE = 60;
 	public final static String TITLE = "Kulthro";
 	private State state = State.Menu;
@@ -31,6 +31,7 @@ public class Game {
 
 		mobs = new ArrayList<Entity>();
 		mobs.add(new Player(300, 300, 0, 0, 64, 64, 100));
+		mobs.add(new Player(1000, 20, 0, 0, 64, 64, 100));
 		control = new ClassicControls(mobs.get(0));
 
 		//an environment with gravity at 2.0f
@@ -40,13 +41,13 @@ public class Game {
 
 		//temp addition to textures
 		for(Entity e : getMobs()) {
-			e.setTexture(Render.getTexture("Slime", "png"));
+			e.setTexture(Render.getTexture("default","png"));
 		}
 
 		//*********** Temp menu inits (will be in data files eventually)
 
 		mainMenu = new Menu(new MenuItem[] {
-				new SquareButton(200,400,600,500, "Exit", "png", "Exit"),
+				new SquareButton(200,400,600,500, "Exit","png","Exit"),
 				new SquareButton(200,250,600,350, "Options", "png", "toOptions"),
 				new SquareButton(200,100,600,200, "Start", "png", "toChoose"),
 				new TextBox(10, "Main Menu", Color.white)});
