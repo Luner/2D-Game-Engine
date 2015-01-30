@@ -35,9 +35,9 @@ public class Game {
 		control = new ClassicControls(mobs.get(0));
 
 		//an environment with gravity at 2.0f
-		earth = new EnvironmentEarth(0.2f);
-		moon = new EnvironmentEarth(0.09f);
-		space = new EnvironmentSpace();
+		earth = new EnvironmentGravity(0.2f);
+		moon = new EnvironmentGravity(0.09f);
+		space = new EnvironmentGravity(0);
 
 		//temp addition to textures
 		for(Entity e : getMobs()) {

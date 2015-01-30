@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import com.kulthro.games.game_engine.entities.Entity;
 import com.kulthro.games.game_engine.util.Vector2f;
 
-public class EnvironmentEarth implements Environment{
+public class EnvironmentGravity implements Environment{
 	
 	float gravity;
-	public EnvironmentEarth(float gravity){
+	public EnvironmentGravity(float gravity){
 		this.gravity = gravity;
 	}
 	
