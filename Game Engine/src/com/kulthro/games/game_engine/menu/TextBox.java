@@ -27,15 +27,15 @@ public class TextBox implements MenuItem{
 	}
 	
 	public TextBox(float topY, String text) {
-		this((Game.WIDTH/2) - (Screen.fontSize*text.length())/2, topY, text, Color.black, "");
+		this((Screen.WIDTH/2) - (Screen.fontSize*text.length())/2, topY, text, Color.black, "");
 	}
 	
 	public TextBox(float topY, String text, Color color) {
-		this((Game.WIDTH/2) - (Screen.font.getWidth(text))/2, topY, text, color, "");
+		this((Screen.WIDTH/2) - (Screen.font.getWidth(text))/2, topY, text, color, "");
 	}
 	
 	public TextBox(float topY, String text, Color color, String action) {
-		this((Game.WIDTH/2) - (Screen.font.getWidth(text))/2, topY, text, color, action);
+		this((Screen.WIDTH/2) - (Screen.font.getWidth(text))/2, topY, text, color, action);
 	}
 	
 	public TextBox(float leftX, float topY, String text, Color color, String action){

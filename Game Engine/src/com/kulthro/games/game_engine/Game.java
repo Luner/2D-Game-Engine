@@ -11,47 +11,25 @@ import com.kulthro.games.game_engine.util.Input;
 
 public class Game {
 
-	public final static int WIDTH = 1200;
-	public final static int HEIGHT = 800;
-	public final static int FRAME_RATE = 60;
-	public final static String TITLE = "Kulthro";
+	public Game(){}
 	private State state = State.Menu;
 
 	private Menu mainMenu, options, credits, chooseEnvironment;
 	private Menu[] menuSystem = new Menu[4];
-	private ClassicControls control;
+
 	private ArrayList<Entity> mobs;
+	private ClassicControls control;
+
 	private Level level;
 	private Environment space, earth, moon;
-	public Game() {
-		Screen.initDisplay(this);
-		Screen.initGL();
-		Screen.initFont();
-		Sounds.initSounds();
-
-		mobs = new ArrayList<Entity>();
-		mobs.add(new Player(300, 300, 0, 0, 64, 64, 100));
-		mobs.add(new Player(1000, 20, 0, 0, 64, 64, 100));
-		control = new ClassicControls(mobs.get(0));
-
-		//an environment with gravity at 2.0f
-		earth = new EnvironmentGravity(0.2f);
-		moon = new EnvironmentGravity(0.09f);
-		space = new EnvironmentGravity(0);
-
-		//temp addition to textures
-		for(Entity e : getMobs()) {
-			e.setTexture(Render.getTexture("default","png"));
-		}
-
-		//*********** Temp menu inits (will be in data files eventually)
-
+	
+	public void initMenus(){
 		mainMenu = new Menu(new MenuItem[] {
 				new SquareButton(200,400,600,500, "Exit","png","Exit"),
 				new SquareButton(200,250,600,350, "Options", "png", "toOptions"),
 				new SquareButton(200,100,600,200, "Start", "png", "toChoose"),
 				new TextBox(10, "Main Menu", Color.white)});
-		
+
 		chooseEnvironment = new Menu(new MenuItem[] {
 				new TextBox(150, "Space", Color.white, "toSpace"),
 				new TextBox(250, "Earth", Color.white, "toEarth"),
@@ -72,26 +50,45 @@ public class Game {
 		menuSystem[1]=options;
 		menuSystem[2]=credits;
 		menuSystem[3]=chooseEnvironment;
-
-		//***********
-
-		this.run();
-		Screen.closeDisplay();
-
 	}
 
-	public static void main(String[] args) {
-		Game game = new Game();
+	public void initMobs(){
+		//TEMP MOBS AND CONTROL
+		mobs = new ArrayList<Entity>();
+		mobs.add(new Player(300, 300, 0, 0, 64, 64, 100));
+		mobs.add(new Player(1000, 20, 0, 0, 64, 64, 100));
+		control = new ClassicControls(mobs.get(0));
+
+		for(Entity e : mobs) {
+			e.setTexture(Render.getTexture("default","png"));
+		}
 	}
-	/*------------------------------------------------- 
-	/  Game Logic functions
-	/-------------------------------------------------- 
-	/ One tick is equal to one frame. Rather than edit the while loop in run(), please add all tick methods within tick();
-	 */
+
+	public void drawGame() {
+		Screen.clearScreen();
+		drawBackground();
+		drawEntities();
+	}
+
+	public void drawEntities() {
+		for(Entity e : mobs) {
+			Render.renderQuad(e.getPosition().getX(), e.getPosition().getY(), e.getPosition().getX() + e.getWidth(), e.getPosition().getY() + e.getHeight(), e.getTexture());
+		}
+	}
+
+	public static void drawBackground() {
+		Render.renderQuadVerticleGradient(0, 0, Screen.WIDTH, Screen.HEIGHT, 0.1f, 0.4f, 0.8f, 0.3f, 0.8f, 1f);
+	}
+
+	public void tick() {
+		level.update();
+	}
 
 	private void run() {
+		initMenus();
+		initMobs();
 
-		while(Screen.screenIsOpen()) {
+		while(true) {
 
 			Screen.clearScreen();
 
@@ -102,8 +99,8 @@ public class Game {
 				if(menuSystem[Menu.index].isInitialized() == false){
 					menuSystem[Menu.index].initMenu();
 				}
-				//Returns the name of the button if it is clicked
 
+				//Returns the action of the button if it is clicked
 				if(Input.getMouseUp(0)){
 					String action = menuSystem[Menu.index].click(Input.getMousePosition());
 					if(!action.equals("none") && !action.equals("")){
@@ -130,18 +127,21 @@ public class Game {
 						}
 						else if(action.equals("toSpace"))
 						{
+							space = new EnvironmentGravity(0);
 							level = new Level(space, mobs);
 							state = State.Game;
 							break;
 						}
 						else if(action.equals("toEarth"))
 						{
+							earth = new EnvironmentGravity(0.2f);
 							level = new Level(earth, mobs);
 							state = State.Game;
 							break;
 						}
 						else if(action.equals("toMoon"))
 						{
+							moon = new EnvironmentGravity(0.09f);
 							level = new Level(moon, mobs);
 							state = State.Game;
 							break;
@@ -159,7 +159,7 @@ public class Game {
 				/*Game Stuff Here*/
 				control.update();
 				tick();
-				Screen.drawGame();
+				drawGame();
 				break;
 			}
 			Input.Update();
@@ -168,30 +168,12 @@ public class Game {
 		}
 	}
 
-	public void tick() {
-		//Updates level
-		level.update();
+	public static void main(String[] args) {
+		Game game = new Game();
+		Screen.initDisplay();
+		Screen.initGL();
+		Screen.initFont();
+		Sounds.initSounds();
+		game.run();
 	}
-
-	//-------------------------------------------------- 
-	//  Getters and Setters
-	//-------------------------------------------------- 
-
-	public ArrayList<Entity> getMobs() {
-		return mobs;
-	}
-
-	public int getEntityCount() {
-		return mobs.size();
-	}
-
-	public State getState() {
-		return state;
-	}
-
-	public Menu getMainMenu() {
-		return mainMenu;
-	}
-
-
 }
