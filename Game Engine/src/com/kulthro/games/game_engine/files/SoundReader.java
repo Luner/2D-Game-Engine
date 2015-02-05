@@ -12,7 +12,6 @@ public class SoundReader {
 			return AudioLoader.getAudio("WAV", getClass().getResourceAsStream("sounds/" + key + ".wav"));
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		return null;
+		} return null;
 	}
 }
