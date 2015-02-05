@@ -1,6 +1,7 @@
 package com.kulthro.games.game_engine.menu;
 
 import com.kulthro.games.game_engine.Render;
+import com.kulthro.games.game_engine.Screen;
 import com.kulthro.games.game_engine.util.Vector2f;
 
 public class Menu { 
@@ -35,7 +36,7 @@ public class Menu {
 				item.setHoverOver(false);
 			}
 		}
-		
+		Screen.clearScreen();
 		renderItems();
 	}
 

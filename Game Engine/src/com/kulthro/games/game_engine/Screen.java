@@ -31,16 +31,11 @@ public class Screen {
 			System.exit(0);
 		}
 	}
-	
+
 	public static void initFont() {
 		// load a default java font
 		Font awtFont = new Font("Copperplate Gothic Bold", Font.BOLD, fontSize);
 		font = new TrueTypeFont(awtFont, true);
-	}
-
-	public static void closeDisplay() {
-		Display.destroy();
-		System.exit(0);
 	}
 
 	public static boolean initGL(){
@@ -59,9 +54,13 @@ public class Screen {
 	public static void updateScreen() {	
 		//Update the screen
 		Display.update();
-		
 		//Keeps a constant frame rate
 		Display.sync(FRAME_RATE);
+	}
+
+	public static void closeDisplay() {
+		Display.destroy();
+		System.exit(0);
 	}
 	
 	public static void clearScreen() {

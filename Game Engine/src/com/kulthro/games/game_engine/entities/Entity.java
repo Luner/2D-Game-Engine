@@ -28,8 +28,9 @@ public abstract class Entity extends Quad{
 		return tex;
 	}
 	
-	public void setTexture(Texture texture) {
+	public Entity setTexture(Texture texture) {
 		this.tex = texture;
+		return this;
 	}
 	
 	public void update() {
