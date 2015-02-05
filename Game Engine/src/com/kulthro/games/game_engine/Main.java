@@ -9,6 +9,6 @@ public class Main {
 		Screen.initFont();
 		Sounds.initSounds(); //Will Eventually be Initialized in a way Similar to Textures
 		game.run();
-	}
-	
+    }
+
 }

@@ -83,4 +83,8 @@ public class Quad{
 	public void setWidth(float width) {
 		this.width = width;
 	}
+    
+	public float area() {
+		return this.width * this.height;
+	}
 }
