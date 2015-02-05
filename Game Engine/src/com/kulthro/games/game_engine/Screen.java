@@ -13,13 +13,16 @@ import org.newdawn.slick.TrueTypeFont;
 public class Screen {
 
 	public final static String TITLE = "Kulthro";
+	
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
+	
 	public final static int FRAME_RATE = 60;
+	
 	public static TrueTypeFont font;
 	public final static int fontSize = 56;
 	
-	/*Initialized the display*/
+	//Initialized the display
 	public static void initDisplay() {		
 		try {
 			Display.setDisplayMode(new DisplayMode(WIDTH,HEIGHT));
@@ -32,19 +35,20 @@ public class Screen {
 		}
 	}
 
+	//Loads a Java Font
 	public static void initFont() {
-		// load a default java font
 		Font awtFont = new Font("Copperplate Gothic Bold", Font.BOLD, fontSize);
 		font = new TrueTypeFont(awtFont, true);
 	}
 
+	//Initializes LWJGL with OpenGL.
 	public static boolean initGL(){
-		//Sets up LWJGL with OpenGL.
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		glOrtho(0,WIDTH,HEIGHT,0,1,-1);	//(0,0) at bottom left & (WIDTH,HEIGHT) at top right
+		glOrtho(0,WIDTH,HEIGHT,0,1,-1);	
 		glMatrixMode(GL_MODELVIEW);
-		//This enables the use of textures
+		
+		//This Enables the Use of Textures
 		glEnable(GL_TEXTURE_2D);
 		glEnable(GL_BLEND); 
 		glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
@@ -52,9 +56,9 @@ public class Screen {
 	}
 
 	public static void updateScreen() {	
-		//Update the screen
+		//Update the Screen
 		Display.update();
-		//Keeps a constant frame rate
+		//Keeps the Screen at This Constant Frame Rate
 		Display.sync(FRAME_RATE);
 	}
 

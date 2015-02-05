@@ -12,11 +12,13 @@ import com.kulthro.games.game_engine.files.ImageReader;
 
 public class Render {
 
+	//Returns an Image Named "key.type" as a Texture
 	public static Texture getTexture(String key, String type){
 		ImageReader load = new ImageReader();
 		return load.loadTexture(key, type);
 	}
 
+	//Basic Rendering of a Quad with a Texture
 	public static void renderQuad(float leftX,float topY,float rightX,float bottomY, Texture tex){
 		tex.bind();
 		glBegin(GL_QUADS);
@@ -33,6 +35,7 @@ public class Render {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 	
+	//Renders a Quad that is Shaded Grey with a Provided Intensity
 	public static void renderShadedQuad(float leftX,float topY,float rightX,float bottomY, Texture tex, float intensity){
 		tex.bind();
 		glBegin(GL_QUADS);
@@ -49,6 +52,7 @@ public class Render {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
+	//Renders a Quad with a Texture with the Provided Color (in RGB Form)
 	public static void renderQuad(float leftX,float topY,float rightX,float bottomY, Texture tex, float r, float g, float b){
 		tex.bind();
 		glBegin(GL_QUADS);
@@ -65,8 +69,8 @@ public class Render {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
+	//Renders a Quad without a Texture with the Provided Color (in RGB Form)
 	public static void renderQuad(float leftX,float topY,float rightX, float bottomY, float r, float g, float b) {
-
 		glBegin(GL_QUADS);
 		glColor3f(r,g,b);
 		GL11.glVertex2f(leftX, topY);    		// Top Left Of The Quad
@@ -76,7 +80,8 @@ public class Render {
 		glEnd();
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
-
+	
+	//Renders a Quad without a Texture with the Provided Vertical Color Gradient (in RGB Form)
 	public static void renderQuadVerticleGradient(float leftX,float topY,float rightX, float bottomY, float rBottom, float gBottom, float bBottom, float rTop, float gTop, float bTop) {
 
 		glBegin(GL_QUADS);
@@ -90,6 +95,7 @@ public class Render {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
+	//Renders a Quad without a Texture with the Provided Horizontal Color Gradient (in RGB Form)
 	public static void renderQuadHorizontalGradient(float leftX,float topY,float rightX, float bottomY, float rLeft, float gLeft, float bLeft, float rRight, float gRight, float bRight) {
 
 		glBegin(GL_QUADS);
