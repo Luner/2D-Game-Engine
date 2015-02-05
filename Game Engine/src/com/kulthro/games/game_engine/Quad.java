@@ -16,41 +16,47 @@ public class Quad{
 		this.height = height;
 	}
 
-	//This Adds the Position to the Direction
-	public void move() {
-		this.position = this.position.add(direction);
-	}
-	
 	//This Collision is Completely Broken and Will be Worked on After the Cleaning Up is Done
 	public void isColliding(Quad quad){
-		boolean collisionX = false;
-		boolean collisionY = false;
-		boolean collision = false;
-		if(this.getPosition().getX() <= quad.getPosition().getX() + quad.getWidth() && this.position.getX() + this.getWidth() > quad.getPosition().getX()
-				&& this.getPosition().getY() <= quad.getPosition().getY() + quad.getHeight() && this.position.getY() + this.getHeight() > quad.getPosition().getY()){
-			collision = true;
-		}
-
-		if(collision){
-			if(collisionY){
-				quad.setDirection(new Vector2f(this.getDirection().getX(),0));
-				if(this.getPosition().getY() < quad.getPosition().getY()){
-					quad.setPosition(new Vector2f (quad.getPosition().getX() , this.getPosition().getY() + this.getHeight()));	
-				} else {
-					quad.setPosition(new Vector2f (quad.getPosition().getX() , this.getPosition().getY() - this.getHeight()));	
+		if((quad.getPosition().getX() + quad.getWidth() >= this.position.getX() && quad.getPosition().getX() <= this.position.getX() + this.width)
+				&& (quad.getPosition().getY() + quad.getHeight() >= this.getPosition().getY() + 1 && quad.getPosition().getY() <= this.position.getY() + this.height)){
+			if((quad.getPosition().getY() + quad.getHeight() >= this.position.getY() && quad.getPosition().getY() <= this.position.getY() + this.height) && 
+					(!(quad.getPosition().getX() + quad.getWidth() <= this.getPosition().getX() + this.getDirection().getX()))&& !(quad.getPosition().getX() >= this.position.getX() + this.width + /*This may be a -*/ this.getDirection().getX())){
+				if(quad.getPosition().getY() + quad.getHeight() <= this.getPosition().getY() + this.height/2 /*Value may be wrong*/){
+					//CollisionFromTop = true;
+					//CollisionFromBottom = false;
+					quad.setDirection(new Vector2f(quad.getDirection().getX(),0));
+					quad.setPosition(new Vector2f (quad.getPosition().getX(), this.getPosition().getY() - quad.getHeight()));
+					System.out.println("CollisionFromTop");
+				}
+				else{
+					//CollisionFromTop = false;
+					//CollisionFromBottom = true;
+					quad.setDirection(new Vector2f(quad.getDirection().getX(),0));
+					quad.setPosition(new Vector2f (quad.getPosition().getX(), this.getPosition().getY() + quad.getHeight()));
+					System.out.println("CollisionFromBottom");
 				}
 			}
-			if(collisionX){
-				quad.setDirection(new Vector2f(0,this.getDirection().getY()));
-				if(this.getPosition().getX() < quad.getPosition().getX()){
-					quad.setPosition(new Vector2f (this.getPosition().getX() + quad.getWidth(), quad.getPosition().getY()));	
-				} else {
-					quad.setPosition(new Vector2f (this.getPosition().getX() - this.getWidth(), quad.getPosition().getY()));	
+			else if(quad.getPosition().getX() + quad.getWidth() >= this.getPosition().getX() && quad.getPosition().getX() <= this.position.getX() + this.width){
+				if(quad.getPosition().getX() + quad.getWidth() <= this.position.getX() + this.width / 2 /*Value may be Wrong*/){
+					//CollisionFromRight = true;
+					//CollisionFromLeft = false;
+					quad.setDirection(new Vector2f(0,quad.getDirection().getY()));
+					quad.setPosition(new Vector2f (this.getPosition().getX() - quad.getWidth(), quad.getPosition().getY()));
+					System.out.println("CollisionFromLeft");
 				}
-				System.out.println("X-collision");
+				else{
+					//CollisionFromRight = false;
+					//CollisionFromLeft = true;
+					quad.setDirection(new Vector2f(0,quad.getDirection().getY()));
+					quad.setPosition(new Vector2f (this.getPosition().getX() + quad.getWidth(), quad.getPosition().getY()));
+					System.out.println("CollisionFromRight");
+				
+				}
 			}
-		}
+		}	
 	}
+
 
 	public Vector2f getDirection() {
 		return direction;
@@ -80,10 +86,15 @@ public class Quad{
 		this.height = height;
 	}
 
+	//This Adds the Position to the Direction
+	public void move() {
+		this.position = this.position.add(direction);
+	}
+
 	public void setWidth(float width) {
 		this.width = width;
 	}
-    
+
 	public float area() {
 		return this.width * this.height;
 	}

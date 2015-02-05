@@ -38,12 +38,8 @@ public class Level {
 	//To be Fixed With Collision
 	public void update(){
 		environment.update(entities);
+		entities.get(1).isColliding(entities.get(0));
 		for(Entity entity : entities) {
-			for(Entity entity2 : entities) {
-				if(!entity.equals(entity2)) {
-					entity.isColliding(entity2);
-				}
-			}
 			entity.update();
 		}
 		render();
