@@ -7,7 +7,7 @@ public class ClassicControls extends Control{
 	public ClassicControls(Entity controlling) {
 		super(controlling);
 	}
-
+	
 	public void update(){
 		if(Input.getKey(Input.KEY_W)){
 			this.moveY(-0.25f);

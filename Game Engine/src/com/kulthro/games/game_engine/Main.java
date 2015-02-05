@@ -7,7 +7,7 @@ public class Main {
 		Screen.initDisplay();
 		Screen.initGL();
 		Screen.initFont();
-		Sounds.initSounds(); //Will eventually initialize in a different way
+		Sounds.initSounds(); //Will Eventually be Initialized in a way Similar to Textures
 		game.run();
 	}
 	

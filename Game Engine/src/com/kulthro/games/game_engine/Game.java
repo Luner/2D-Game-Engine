@@ -1,11 +1,14 @@
 package com.kulthro.games.game_engine;
 
 import java.util.ArrayList;
+
 import org.newdawn.slick.Color;
+
 import com.kulthro.games.game_engine.entities.*;
 import com.kulthro.games.game_engine.game.*;
 import com.kulthro.games.game_engine.menu.*;
 import com.kulthro.games.game_engine.util.Input;
+import com.kulthro.games.game_engine.util.Vector2f;
 
 public class Game {
 
@@ -131,8 +134,8 @@ public class Game {
 	//Initializes the Entities
 	private void initEntities(){
 		entities = new ArrayList<Entity>();
-		entities.add(new Player(300, 300, 0, 0, 64, 64, 100).setTexture(Render.getTexture("default", "png")));
-		entities.add(new Player(1000, 20, 0, 0, 64, 64, 100).setTexture(Render.getTexture("default", "png")));
+		entities.add(new Mob(new Vector2f(300, 300), new Vector2f(0, 0), 64, 64, 100).setTexture(Render.getTexture("default", "png")));
+		entities.add(new Mob(new Vector2f(1000, 20), new Vector2f(0, 0), 64, 64, 100).setTexture(Render.getTexture("default", "png")));
 	}
 	
 	//Binds the ClassicControls to the first Entity
