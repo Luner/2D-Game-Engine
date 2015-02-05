@@ -5,7 +5,6 @@ public class Color3f {
 	private float g;
 	private float b;
 
-	//Using in Passing into the Render Class (To Be Implemented)
 	public Color3f(float r, float g, float b){
 		this.r = r;
 		this.g = g;
