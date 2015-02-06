@@ -20,6 +20,7 @@ public class Game {
 	private Menu[] menuSystem = new Menu[4];
 
 	private ArrayList<Entity> entities;
+	private ArrayList<Block> blocks;
 	private ClassicControls control;
 
 	//All of the Possible Environments are Listed Here
@@ -29,6 +30,7 @@ public class Game {
 	public void run() {
 		initMenus();
 		initEntities();
+		initBlocks();
 		initControl();
 		
 		while(true) {
@@ -64,18 +66,18 @@ public class Game {
 							break;
 						} else if(action.equals("toSpace")) {
 							space = new EnvironmentGravity(0);
-							level = new Level(space, entities);
+							level = new Level(space, entities, blocks);
 							state = State.Game;
 							break;
 						} else if(action.equals("toEarth")) {
-							earth = new EnvironmentGravity(0.2f);
-							addFloor();
-							level = new Level(earth, entities);
+							earth = new EnvironmentGravity(0.3f);
+							addFloor(); 
+							level = new Level(earth, entities, blocks);
 							state = State.Game;
 							break;
 						} else if(action.equals("toMoon")) {
 							moon = new EnvironmentGravity(0.09f);
-							level = new Level(moon, entities);
+							level = new Level(moon, entities, blocks);
 							state = State.Game;
 							break;
 						}
@@ -136,11 +138,14 @@ public class Game {
 	private void initEntities(){
 		entities = new ArrayList<Entity>();
 		entities.add(new Mob(new Vector2f(300, 300), new Vector2f(0, 0), 64, 64, 100).setTexture(Render.getTexture("default", "png")));
-		entities.add(new Mob(new Vector2f(1000, 20), new Vector2f(0, 0), 64, 64, 100).setTexture(Render.getTexture("default", "png")));
+	}
+	
+	private void initBlocks(){
+		blocks = new ArrayList<Block>();
 	}
 	
 	private void addFloor(){
-		entities.add(new Mob(new Vector2f(0, Screen.HEIGHT - 64), new Vector2f(0,0), Screen.WIDTH, 64, 10).setTexture(Render.getTexture("default","png")));
+		blocks.add(new Block(new Vector2f(0, Screen.HEIGHT - 64), Screen.WIDTH, 64).setTexture(Render.getTexture("default","png")));
 	}
 	
 	//Binds the ClassicControls to the first Entity

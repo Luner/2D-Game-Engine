@@ -24,7 +24,7 @@ public class ClassicControls extends Control{
 		}
 		if(Input.getKeyDown(Input.KEY_SPACE)){
 			this.setPosition(new Vector2f(this.getPosition().getX(), this.getPosition().getY() - 1));
-			this.setYVelocity(-5f);
+			this.setYVelocity(-10f);
 		}
 		
 	}

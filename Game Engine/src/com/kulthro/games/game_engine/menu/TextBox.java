@@ -2,7 +2,6 @@ package com.kulthro.games.game_engine.menu;
 
 import org.newdawn.slick.Color;
 
-import com.kulthro.games.game_engine.Game;
 import com.kulthro.games.game_engine.Screen;
 import com.kulthro.games.game_engine.Sounds;
 
