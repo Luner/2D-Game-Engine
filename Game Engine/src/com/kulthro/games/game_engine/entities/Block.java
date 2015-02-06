@@ -46,7 +46,7 @@ public class Block extends Quad{
 					//CollisionFromTop = false;
 					//CollisionFromBottom = true;
 					quad.setDirection(new Vector2f(quad.getDirection().getX(),0));
-					quad.setPosition(new Vector2f (quad.getPosition().getX(), this.getPosition().getY() + quad.getHeight()));
+					quad.setPosition(new Vector2f (quad.getPosition().getX(), this.getPosition().getY() + this.getHeight() + 1));
 					System.out.println("CollisionFromBottom");
 				}
 			}
@@ -62,8 +62,8 @@ public class Block extends Quad{
 					//CollisionFromRight = false;
 					//CollisionFromLeft = true;
 					quad.setDirection(new Vector2f(0,quad.getDirection().getY()));
-					quad.setPosition(new Vector2f (this.getPosition().getX() + quad.getWidth(), quad.getPosition().getY()));
-					System.out.println("CollisionFromRight");
+					quad.setPosition(new Vector2f (this.getPosition().getX() + this.getWidth(), quad.getPosition().getY()));
+					System.out.println("CollisionFromRight"); 
 
 				}
 			}
