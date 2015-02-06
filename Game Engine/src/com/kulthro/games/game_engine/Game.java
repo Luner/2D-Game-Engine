@@ -69,6 +69,7 @@ public class Game {
 							break;
 						} else if(action.equals("toEarth")) {
 							earth = new EnvironmentGravity(0.2f);
+							addFloor();
 							level = new Level(earth, entities);
 							state = State.Game;
 							break;
@@ -136,6 +137,10 @@ public class Game {
 		entities = new ArrayList<Entity>();
 		entities.add(new Mob(new Vector2f(300, 300), new Vector2f(0, 0), 64, 64, 100).setTexture(Render.getTexture("default", "png")));
 		entities.add(new Mob(new Vector2f(1000, 20), new Vector2f(0, 0), 64, 64, 100).setTexture(Render.getTexture("default", "png")));
+	}
+	
+	private void addFloor(){
+		entities.add(new Mob(new Vector2f(0, Screen.HEIGHT - 64), new Vector2f(0,0), Screen.WIDTH, 64, 10).setTexture(Render.getTexture("default","png")));
 	}
 	
 	//Binds the ClassicControls to the first Entity
